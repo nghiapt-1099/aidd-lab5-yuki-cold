@@ -32,7 +32,7 @@ Backlog chia từ **bộ thiết kế chi tiết LAB-4 nộp ngày 2026-10-24**,
 |---|---|
 | Kho này | https://github.com/nghiapt-1099/aidd-lab5-yuki-cold |
 | Bảng công việc | [GitHub Project](https://github.com/users/nghiapt-1099/projects/1) |
-| Báo cáo chấm điểm HTML | [`Output/swp-report/swp-lab5-2026-10-26.html`](swp-report/swp-lab5-2026-10-26.html) |
+| Báo cáo chấm điểm HTML | [`swp-report/swp-lab5-2026-10-26.html`](swp-report/swp-lab5-2026-10-26.html) |
 
 **Đã mở thử bằng cửa sổ ẩn danh** (không đăng nhập): kho và bảng công việc đều xem được.
 Riêng file HTML, GitHub trả về dưới dạng mã nguồn — tải về rồi mở bằng trình duyệt thì xem

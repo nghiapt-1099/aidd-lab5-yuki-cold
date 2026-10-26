@@ -7,7 +7,7 @@
 
 | Thứ | Giá trị |
 |---|---|
-| Báo cáo HTML | [`Output/swp-report/swp-lab5-2026-10-26.html`](swp-report/swp-lab5-2026-10-26.html) — tự chứa, mở offline, không gọi tài nguyên ngoài |
+| Báo cáo HTML | [`swp-report/swp-lab5-2026-10-26.html`](swp-report/swp-lab5-2026-10-26.html) — tự chứa, mở offline, không gọi tài nguyên ngoài |
 | Nguồn chấm | GitHub Project `https://github.com/users/nghiapt-1099/projects/1` — **chính bảng công việc**, không phải danh sách rời |
 | Mô hình điểm | `standard-work-point` · ma trận `swp-matrix-v2` — SWP = ô tra của Bề rộng × Độ khó, **không cộng hai trục** |
 | Phạm vi | 201 mục: **172 mục chấm trực tiếp** + **29 mục cha** lấy tổng của con |

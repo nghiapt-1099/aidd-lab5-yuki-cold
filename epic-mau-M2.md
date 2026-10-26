@@ -43,7 +43,7 @@ Ngăn xếp đã chốt ở Architecture Design của LAB-4 — mọi mục tron
 | Ngôn ngữ | **TypeScript** trên toàn monorepo | |
 | Dữ liệu | **PostgreSQL 16** — `business_event` chỉ-thêm cộng các bảng trạng thái | Ảnh POD ở object storage |
 
-**Chưa chốt, phải hỏi trước khi dựng:** công cụ migration, test runner, địa chỉ môi trường thử, tài khoản thử của từng vai, IdP thử. Chưa mục nào trong backlog nhận những việc này — xem `Output/task-breakdown.md` §4.8.
+**Chưa chốt, phải hỏi trước khi dựng:** công cụ migration, test runner, địa chỉ môi trường thử, tài khoản thử của từng vai, IdP thử. Chưa mục nào trong backlog nhận những việc này — xem [`task-breakdown.md`](task-breakdown.md) §4.8.
 
 ## Mục tiêu
 
@@ -306,7 +306,7 @@ Rút từ `system-design/database-design/*_DB.md` §4.x của LAB-4.
 
 ## Tham chiếu
 
-- Tiền đề: `LAB-5/Output/PREMISE.md` §1.1, nhãn **[đề xuất]** — chỗ hở có nguồn, nhưng **cấu trúc bảng là lựa chọn của người làm**. Bằng chứng `EV-01`, `EV-16`.
+- Tiền đề: [`PREMISE.md`](PREMISE.md) §1.1, nhãn **[đề xuất]** — chỗ hở có nguồn, nhưng **cấu trúc bảng là lựa chọn của người làm**. Bằng chứng `EV-01`, `EV-16`.
 - RFP: `p.16` `FR-REC-04`, `DR-LOT-01` (lô và stock unit bất biến, retry không trùng khoá). Từ điển RFP có định nghĩa 「unit」 (PREMISE §1.1 dẫn); người làm đọc mục đó khi chốt cấu trúc.
 - Function: `N4-01` (`Requirements/03_requirements/functional/04-function-list.csv`). Spec: `LAB-4/Output/specs/specs/m2-inbound/screen-specification/S2-03_SPEC.md` mục 3; API: `API-M2-012` — `LAB-4/Output/specs/specs/_common/api-list.md:136`.
 - Database Design: `LAB-4/Output/specs/specs/system-design/database-design/m2-inbound/M2_DB.md`.

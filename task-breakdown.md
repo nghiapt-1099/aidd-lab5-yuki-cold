@@ -4,7 +4,7 @@
 |---|---|
 | Trạng thái | **Bản 1 — chờ duyệt G2** |
 | Ngày | 2026-10-26 |
-| Tiền đề | `Output/PREMISE.md` bản 7, duyệt ở G1 (2026-10-26). Errata `E11` đã áp vào SSOT ở B2 |
+| Tiền đề | [`PREMISE.md`](PREMISE.md) bản 7, duyệt ở G1 (2026-10-26). Errata `E11` đã áp vào SSOT ở B2 |
 | Vật liệu | Bộ thiết kế LAB-4 đã nộp: **67 màn Core** (16 mức A, 51 mức B) · **83 API** có file spec riêng · **11 Technical Design** · **11 nhóm Database Design** |
 | Dữ liệu backlog | `work/backlog.csv` (chưa lên GitHub — B4 mới đẩy) · mô tả từng mục ở `work/issues/{backlog_id}.md` |
 
@@ -259,7 +259,7 @@ GitHub không cho gán `assignee` là user không có quyền repo. Đề xuất
 
 ### 5.3 (F) Burndown — **CHỐT: script sinh bảng + ảnh** [G2, 2026-10-26]
 
-GitHub Project v2 không có burndown sẵn. Đề cho phép "ảnh hoặc bảng". Đề xuất: script đọc `gh project item-list --format json` → **bảng + ảnh**, cả hai vào `Output/`, sinh lại được từ dữ liệu Project chứ không vẽ tay.
+GitHub Project v2 không có burndown sẵn. Đề cho phép "ảnh hoặc bảng". Đề xuất: script đọc `gh project item-list --format json` → **bảng + ảnh**, cả hai vào gốc kho, sinh lại được từ dữ liệu Project chứ không vẽ tay.
 
 ### 5.4 Quy trình git và publish — **CHỐT: script + leak-scan chặn** [G2, 2026-10-26]
 
