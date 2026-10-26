@@ -3,7 +3,12 @@
 Ba phần theo yêu cầu đề: (1) giao việc cho AI ra sao, (2) soát output ra sao và bắt được gì,
 (3) chỗ nào hiệu quả, chỗ nào chưa.
 
-**Hai con số đặt trước cho dễ đọc phần sau:** sổ lỗi AI của riêng LAB-5 có **216 dòng**, và bộ
+**Ngôi xưng trong bài này.** "Tôi" là **học viên** — người làm bài và là người chịu trách nhiệm
+mọi dòng trong bộ nộp. Việc nào do AI làm thì gọi tên rõ: *session chính (Opus)* điều phối và
+viết script, *subagent (Sonnet)* làm phần khối lượng, *Codex* soát chéo. Mọi quyết định ở tám
+gate `G0`…`G7` là của tôi, ghi ngày và chữ ký trong `work/ai-log.md`.
+
+**Hai con số đặt trước cho dễ đọc phần sau:** sổ lỗi AI của riêng LAB-5 có **218 dòng**, và bộ
 kiểm chạy **19 vòng** (`R1`…`R19`). Hai file này nằm trong thư mục làm việc, **không nộp**:
 `work/ai-log.md` và `work/test-summary.md`.
 
@@ -266,8 +271,15 @@ Kết thúc bằng đúng một dòng: `Status: DONE`
 **Quyết định — nhận, và đây là phép đo hữu ích nhất của cả bài.** Vòng đầu: **9 KHÔNG LÀM ĐƯỢC
 · 6 PHẢI ĐOÁN · 0 ĐỦ** — trong khi bộ kiểm máy của tôi đã xanh 7/7. Hai phép đo nói hai điều
 khác nhau, và phép đo đúng là phép đo của người đọc. Sau khi rót nội dung tham chiếu vào mô tả
-(hướng C): **6 KHÔNG · 9 ĐOÁN · 0 ĐỦ**. Vẫn chưa có mục nào `ĐỦ ĐỂ LÀM` — tôi ghi đúng con số
-đó vào `task-breakdown.md` thay vì làm tròn lên.
+(hướng C): **6 KHÔNG · 9 ĐOÁN · 0 ĐỦ**.
+
+Vòng ba, trước khi nộp, đổi hai thứ: mỗi mục thêm khối **"Bắt đầu từ đâu"** tách *làm được ngay*
+khỏi *chờ*, và lược đồ phản hồi của từng API đưa vào bình luận của mục. Đo lại trên 8 mục khó
+nhất, chấm theo phần *làm được ngay*: **0 KHÔNG · 6 ĐOÁN · 2 ĐỦ**. Lần đầu có mục đạt `ĐỦ ĐỂ LÀM`.
+
+Phần `PHẢI ĐOÁN` còn lại **không** phải chép thiếu, mà là **thiết kế chưa có**: biểu thức CHECK,
+thuật toán `etag`, thứ tự kiểm lỗi, ma trận vai × trạng thái. Ghi vào `task-breakdown.md` §4.12
+chứ không bịa vào mô tả — bịa thì người đọc mù chấm `ĐỦ`, còn người dựng thật dựng sai.
 ### 1.7 Review chéo độc lập
 
 **Giao cho:** `codex:codex-rescue`, model `(mặc định)` · **Khi nào:** sau mỗi bản PREMISE; tổng 6 vòng
@@ -325,6 +337,17 @@ Nền để đọc: CLAUDE.md mục 8 (luật C1–C10); SSOT là `Requirements/
 
 **Output chính:** danh sách phát hiện có trích dẫn, mỗi phát hiện một mức nghiêm trọng.
 
+**Bảng nhận / bác theo từng vòng** — C9 đòi reviewer chéo phải có bảng này:
+
+| Vòng | Phát hiện chính | Nhận / Bác | Lý do | Đã sửa ở đâu |
+|---|---|---|---|---|
+| PREMISE bản 1–4 | Khẳng định về nguồn mà chưa đọc đủ nguồn (6 ví dụ) | **Nhận** | Kiểm lại từng dẫn chiếu, Codex đúng cả sáu | Đổi cách làm: bằng chứng trước, khẳng định sau (`ai-log` #66, #67) |
+| bản 2–4 | Token `gh` không hợp lệ | **Bác hai lần** | `gh api user` trả `nghiapt-1099`, mã thoát 0 | Không sửa; ghi lý do bác vào `ai-log` |
+| bản 5 | 8 lỗi lớp suy luận (nguồn nói A, kết luận là B) | **Nhận** | Đọc lại từng dòng, cả tám đều vượt quá nguồn | Thêm ba luật L5, L6, L7 vào `LAB-5 Planning.md` §2.4.1 |
+| bản 6 | 5 lỗi chặn | **Nhận** | Có trích dẫn dòng cụ thể | Vào thẳng PREMISE bản 7 |
+| bản 6 | 3 phát hiện về luồng cất hàng | **Nhận** | Bốn nguồn của chính LAB-4 đều nói tách | PREMISE §1.4, errata `E11` |
+| trước nộp (G7) | 26 phát hiện, 13 CHẶN | **Nhận 24, bác 2** | Bác: "`SETUP` nên tách theo capability" (không đủ dữ liệu để chia có căn cứ → chuyển thành trình hai kịch bản) và "đọc mù phải đạt ĐỦ mới được chốt" (giữ, nhưng chấm theo phần *làm được ngay*) | `task-breakdown.md` §2, §3 · `PREMISE.md` §3 · `estimate.md` §3.2, §5.2 · `README.md` §5 · `ai-log` #217–#219 |
+
 **Quyết định — nhận phần lớn, bác có lý do phần còn lại.** Ví dụ bác: Codex báo token `gh`
 không hợp lệ; tôi chạy `gh api user` trả `nghiapt-1099`, mã thoát 0 → **bác hai lần**. Ví dụ
 nhận: 5 phát hiện ở bản 6 và 3 phát hiện về luồng cất hàng, đều vào thẳng bản 7. Sổ lỗi có
@@ -348,26 +371,54 @@ người chấm thứ hai — ghi thành caveat trong báo cáo HTML và trong `
 <details><summary>Ghi chú nguyên văn — bấm để mở</summary>
 
 ````
-# Prompt nguyên văn — ghi SWP đã chốt lên trường `Point` của GitHub Project
+# Lời giao việc nguyên văn — ghi SWP đã chốt lên trường `Point` của GitHub Project
 
-Lưu theo luật C9: AI-report phải giữ ít nhất một prompt nguyên văn cho mỗi loại việc giao AI.
+> **Nói rõ trước:** bước này **không giao cho subagent**. Nó là thao tác **ghi** lên tài khoản
+> thật của người dùng, mà `CLAUDE.md` §5 bắt thao tác đụng dữ liệu dùng chung phải do session
+> chính chạy và báo rõ. Vì vậy "prompt" ở đây là **lời giao việc session chính tự nhận và làm
+> theo**, chép nguyên văn, kèm lệnh đã chạy. Không bịa ra một prompt subagent không tồn tại.
 
 **Loại việc:** ghi dữ liệu lên bảng công việc thật.
-**Ai chạy:** session chính (Opus), bằng script `work/push-points.py`, không giao subagent.
-**Vì sao không giao subagent:** đây là thao tác **ghi** lên tài khoản người dùng; theo `CLAUDE.md` §5
-thao tác đụng dữ liệu dùng chung phải do session chính chạy và báo rõ, không giao qua tay thứ ba.
+**Ai chạy:** session chính (Opus), bằng script `work/push-points.py`.
 
-**Ranh giới quan trọng:** skill `tkm:estimate-swp` **read-only** với mọi nguồn — nó cấm tạo hay sửa
-trường, mục, issue trên tracker. Việc ghi `Point` lên Project vì thế **nằm ngoài skill**, là bước
-riêng của LAB-5 theo `LAB-5 Planning.md` §B5. Skill chỉ sinh báo cáo; script này mới ghi.
+## Lời giao việc
 
-**Nguồn số:** `work/swp/payload-cal.json`, trường `finalSWP` của từng mục, sau khi người duyệt
-kiểm 5 issue mẫu và hiệu chỉnh đã lan theo tầng. Không lấy từ `initialSWP`.
+```
+Ghi SWP đã chốt lên trường `Point` của Project 1, cho cả 201 mục.
 
-**Quy tắc:**
-- Mục cha (`parents[]`) lấy `finalSWP` do validator tính = tổng con, không chấm lại.
+Nguồn số: `work/swp/payload-cal.json`, trường `finalSWP` của từng mục — bản SAU khi người
+duyệt kiểm 5 mục mẫu và hiệu chỉnh đã lan theo tầng. Không lấy `initialSWP`.
+
+Luật:
+- Mục cha lấy `finalSWP` do validator tính = tổng con. Không chấm lại mục cha.
 - Mục nào đã có `Point` đúng giá trị thì bỏ qua, không ghi đè.
-- Ghi xong phải đọc lại từ Project để đối chiếu, không tin kết quả lệnh ghi.
+- Ghi xong PHẢI đọc ngược từ Project để đối chiếu. Mã thoát 0 của lệnh ghi không phải
+  bằng chứng đã ghi đúng.
+- Không đụng vào trường nào khác.
+
+Ranh giới: skill `tkm:estimate-swp` tự khai read-only với mọi tracker — nó cấm tạo hay sửa
+trường, mục, issue. Việc ghi `Point` vì thế NẰM NGOÀI skill, là bước riêng của LAB-5 theo
+`LAB-5 Planning.md` §B5. Skill chỉ sinh báo cáo; script này mới ghi.
+```
+
+## Lệnh đã chạy
+
+```bash
+python3 work/push-points.py                 # ghi 201 mục
+python3 work/checks/check_swp.py            # đọc ngược từ board, đối chiếu
+```
+
+## Kết quả
+
+`push-points.py` → `đã ghi 201 mục`, mã thoát 0.
+`check_swp.py` → **XANH 5/5**: 201/201 `Point` khớp `finalSWP` · 29/29 mục cha bằng tổng con ·
+0 mục `needs-breakdown` · tổng trên board 2787 (1245 mục lá + 1542 mục cha).
+
+## Quyết định nhận / bác
+
+**Nhận kết quả**, vì đã đọc ngược từ chính bảng công việc chứ không tin mã thoát. Một chỗ phải
+sửa giữa chừng: `gh api graphql -F` chỉ ép được số nguyên và boolean, gặp số thập phân thì gửi
+thành chuỗi và máy chủ từ chối — ghi ở `work/ai-log.md` #196 và #204.
 ````
 
 </details>
@@ -402,12 +453,12 @@ Hai việc này **không có prompt nào**, vì chúng tất định:
 
 ### 2.2 Phát hiện gì
 
-Sổ lỗi 216 dòng. Phân loại theo từ khoá ở cột *"Phát hiện bằng gì"*:
+Sổ lỗi 218 dòng. Phân loại theo từ khoá ở cột *"Phát hiện bằng gì"*:
 
 | Phát hiện bằng | Số dòng |
 |---|---:|
-| Review chéo Codex | ít nhất 60 |
-| Bộ kiểm máy | ít nhất 19 |
+| Review chéo Codex | ít nhất 61 |
+| Bộ kiểm máy | ít nhất 20 |
 | Chính agent tự khai | ít nhất 16 |
 | Đọc mù | ít nhất 15 |
 | Người duyệt | ít nhất 12 |
@@ -447,7 +498,7 @@ ghi `In Progress` chữ P hoa (#209). Lần thứ ba suýt ghi hỏng board publ
 ### 3.1 Chỗ tin là hiệu quả
 
 **Đỏ trước, xanh sau — áp cho cả tài liệu, không riêng code.** Mỗi bước viết bộ kiểm **trước**
-khi có dữ liệu, chạy cho nó đỏ, rồi mới làm. 18 vòng kiểm, không vòng nào ghi đè vòng trước.
+khi có dữ liệu, chạy cho nó đỏ, rồi mới làm. 19 vòng kiểm, không vòng nào ghi đè vòng trước.
 Nhờ vậy "xong" là một mã thoát, không phải một câu tự nhận.
 
 **Đọc mù là phép đo đắt nhất và đáng nhất.** Nó đo thứ bộ kiểm máy không đo được: *một người

@@ -2,11 +2,11 @@
 
 | | |
 |---|---|
-| Trạng thái | **Bản 1 — chờ duyệt G2** |
+| Trạng thái | **Đã duyệt ở G2 (2026-10-26)**; §4.11 và các số ở §6 cập nhật sau khi backlog lên bảng công việc |
 | Ngày | 2026-10-26 |
 | Tiền đề | [`PREMISE.md`](PREMISE.md) bản 7, duyệt ở G1 (2026-10-26). Errata `E11` đã áp vào SSOT ở B2 |
 | Vật liệu | Bộ thiết kế LAB-4 đã nộp: **67 màn Core** (16 mức A, 51 mức B) · **83 API** có file spec riêng · **11 Technical Design** · **11 nhóm Database Design** |
-| Dữ liệu backlog | `work/backlog.csv` (chưa lên GitHub — B4 mới đẩy) · mô tả từng mục ở `work/issues/{backlog_id}.md` |
+| Dữ liệu backlog | `work/backlog.csv` (đã đẩy lên GitHub ở B4) · mô tả từng mục ở `work/issues/{backlog_id}.md` |
 
 ## Cách đọc
 
@@ -31,7 +31,7 @@
 | 1.8 | **API có spec riêng gom theo module thành một issue mỗi module**, không một issue mỗi API | 83 issue API lẻ làm board không đọc được, mà vẫn không mịn hơn về mặt theo dõi |
 | 1.9 | **Ranh giới ba loại mục** [QUYẾT ĐỊNH G2]: mục `150` giữ **lớp vào/ra của API** (route, quyền, mã lỗi, idempotency) · mục `180+` **chỉ dựng bảng và ràng buộc** · sub-issue `200+` giữ **hành vi nghiệp vụ** khi màn gọi | Bốn lô viết mô tả tự chia ba kiểu khác nhau rồi xin xác nhận — nguyên tắc chia của tôi không định nghĩa chỗ này |
 
-## 2. Định nghĩa xong (DoD)
+### 1.10 Định nghĩa xong (DoD)
 
 Mỗi mục **không phải epic** có một file mô tả theo khuôn `work/issue-template.md`, gồm bốn mục bắt buộc: `## Mục tiêu` · `## Nguồn trường` · `## Định nghĩa xong (DoD)` · `## Tham chiếu`.
 
@@ -44,7 +44,7 @@ Mỗi mục **không phải epic** có một file mô tả theo khuôn `work/iss
 | 2.5 | Issue chạm câu hỏi khách còn mở phải nhắc đúng mã `CQ` và nói nó chặn phần nào | `check_cq_open.py` |
 | 2.6 | **Không chép nguyên văn RFP** — ≥20 từ tiếng Việt hoặc ≥40 ký tự tiếng Nhật liền mạch là lỗi chặn | `check_leak.py` |
 
-## 2bis. Tự chứa — "tối thiểu đủ để bắt đầu" (hướng C)
+### 1.11 Tự chứa — "tối thiểu đủ để bắt đầu" (hướng C)
 
 Kho nộp là **public**, spec LAB-4 là tài liệu nội bộ không đẩy lên được. Mục nào chỉ trỏ sang spec thì với người đọc ngoài là trống — đọc mù vòng R9 cho **9/15 `KHÔNG LÀM ĐƯỢC`** đúng vì lý do đó (§4.8).
 
@@ -67,7 +67,7 @@ Sub-issue FE/BE **không** chép lại bảng ô của màn — chúng trỏ san
 | `M8_DB.md` dòng `canonicalization_version` | Thiếu một ô so với tiêu đề bảng (đúng chỗ PREMISE §1.9 đã ghi) | Bản chép chèn ô trống + ghi chú ngay dưới bảng. Lỗi gốc do `BL-M8-002` (#121) sửa |
 | `M3_DB.md` ô Overview của `inventory_adjustment` | Dấu `\|` trong backtick (`\|qty_delta\|`) không được thoát, làm vỡ bảng | Bản chép thoát dấu; lỗi gốc vẫn còn ở nguồn |
 
-## 3. Độ hạt và epic
+### 1.12 Độ hạt và epic
 
 **Chốt P2 — hỗn hợp** [QUYẾT ĐỊNH G2, người dùng chốt 2026-10-26] (ba phương án ở `LAB-5 Planning.md` §3.2; P1 theo màn quá thô ở màn mức A, P3 theo lớp cho issue mơ hồ — đúng lỗi đề cấm).
 
@@ -88,11 +88,163 @@ Sub-issue FE/BE **không** chép lại bảng ô của màn — chúng trỏ san
 | `BL-SETUP-000` (#15) | Nền tảng dự án và dữ liệu mẫu | 7 | 0 | — |
 **Tổng: 201 mục — 13 epic · 140 issue · 48 sub-issue.** Khối số trong mỗi epic: `000` epic · `001–019` thay đổi từ PREMISE và issue làm rõ · `010–019` việc nền (epic `SETUP`) · `020–039` function nền · `050–149` màn · `150–179` nhóm API · `180–199` Technical Design và Database Design · `200–299` sub-issue. Mục nhóm API và mục lược đồ **chia phần theo ngân sách độ dài** vì body một issue GitHub tối đa 65 536 ký tự.
 
+## 2. Spec → issue
+
+Mỗi dòng là một đơn vị spec của LAB-4 và những mục backlog sinh ra từ nó. Cột cuối ghi **phần
+spec chưa thành mục nào và vì sao** — chỗ nào ghi "chưa có mục" là chỗ backlog còn thiếu việc,
+không phải chỗ spec thừa.
+
+| Spec | Epic | Issue / sub-issue | Phần spec chưa thành issue và vì sao |
+|---|---|---|---|
+| `S1-01` mức B · `S1-01_SPEC.md` | `M9` | [#137](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/137) `BL-M9-050` | — |
+| `S1-02` mức B · `S1-02_SPEC.md` | `M9` | [#138](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/138) `BL-M9-051` | — |
+| `S1-03` mức B · `S1-03_SPEC.md` | `M1` | [#20](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/20) `BL-M1-050` | — |
+| `S1-04` mức B · `S1-04_SPEC.md` | `M1` | [#21](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/21) `BL-M1-051` | — |
+| `S1-05` mức B · `S1-05_SPEC.md` | `M1` | [#22](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/22) `BL-M1-052` | — |
+| `S1-06` mức A · `S1-06_SPEC.md` | `M1` | `BL-M1-053` · [#155](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/155) `BL-M1-209` · [#156](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/156) `BL-M1-210` · [#157](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/157) `BL-M1-211` | — |
+| `S1-07` mức A · `S1-07_SPEC.md` | `M1` | `BL-M1-054` · [#158](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/158) `BL-M1-212` · [#159](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/159) `BL-M1-213` · [#160](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/160) `BL-M1-214` | — |
+| `S1-08` mức B · `S1-08_SPEC.md` | `M2` | [#37](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/37) `BL-M2-050` | — |
+| `S1-09` mức B · `S1-09_SPEC.md` | `M2` | [#38](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/38) `BL-M2-051` | — |
+| `S1-10` mức B · `S1-10_SPEC.md` | `M3` | [#46](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/46) `BL-M3-050` | — |
+| `S1-11` mức B · `S1-11_SPEC.md` | `M3` | [#47](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/47) `BL-M3-051` | — |
+| `S1-12` mức B · `S1-12_SPEC.md` | `M3` | [#48](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/48) `BL-M3-052` | — |
+| `S1-13` mức B · `S1-13_SPEC.md` | `M3` | [#49](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/49) `BL-M3-053` | — |
+| `S1-14` mức B · `S1-14_SPEC.md` | `M3` | [#50](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/50) `BL-M3-054` | — |
+| `S1-15` mức A · `S1-15_SPEC.md` | `M3` | `BL-M3-055` · [#163](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/163) `BL-M3-215` · [#164](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/164) `BL-M3-216` · [#165](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/165) `BL-M3-217` | — |
+| `S1-16` mức B · `S1-16_SPEC.md` | `M3` | [#52](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/52) `BL-M3-056` | — |
+| `S1-17` mức B · `S1-17_SPEC.md` | `M4` | [#61](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/61) `BL-M4-050` | — |
+| `S1-18` mức A · `S1-18_SPEC.md` | `M4` | `BL-M4-051` · [#166](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/166) `BL-M4-203` · [#167](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/167) `BL-M4-204` · [#168](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/168) `BL-M4-205` | — |
+| `S1-19` mức A · `S1-19_SPEC.md` | `M4` | `BL-M4-052` · [#169](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/169) `BL-M4-206` · [#170](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/170) `BL-M4-207` · [#171](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/171) `BL-M4-208` | — |
+| `S1-20` mức B · `S1-20_SPEC.md` | `M5` | [#79](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/79) `BL-M5-050` | — |
+| `S1-21` mức A · `S1-21_SPEC.md` | `M5` | [#16](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/16) `BL-DRV-001` · `BL-M5-051` · [#175](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/175) `BL-M5-203` · [#176](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/176) `BL-M5-204` · [#177](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/177) `BL-M5-205` | — |
+| `S1-22` mức A · `S1-22_SPEC.md` | `M5` | `BL-M5-052` · [#178](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/178) `BL-M5-206` · [#179](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/179) `BL-M5-207` · [#180](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/180) `BL-M5-208` | — |
+| `S1-23` mức A · `S1-23_SPEC.md` | `M5` | `BL-M5-053` · [#181](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/181) `BL-M5-209` · [#182](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/182) `BL-M5-210` · [#183](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/183) `BL-M5-211` | — |
+| `S1-24` mức B · `S1-24_SPEC.md` | `M5` | [#83](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/83) `BL-M5-054` | — |
+| `S1-25` mức B · `S1-25_SPEC.md` | `M5` | [#84](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/84) `BL-M5-055` | — |
+| `S1-26` mức B · `S1-26_SPEC.md` | `M5` | [#85](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/85) `BL-M5-056` | — |
+| `S1-27` mức B · `S1-27_SPEC.md` | `M6` | [#100](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/100) `BL-M6-050` | — |
+| `S1-28` mức A · `S1-28_SPEC.md` | `M6` | `BL-M6-051` · [#190](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/190) `BL-M6-203` · [#191](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/191) `BL-M6-204` · [#192](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/192) `BL-M6-205` | — |
+| `S1-29` mức A · `S1-29_SPEC.md` | `M6` | `BL-M6-052` · [#193](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/193) `BL-M6-206` · [#194](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/194) `BL-M6-207` · [#195](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/195) `BL-M6-208` | — |
+| `S1-30` mức B · `S1-30_SPEC.md` | `M6` | [#103](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/103) `BL-M6-053` | — |
+| `S1-31` mức A · `S1-31_SPEC.md` | `M7` | `BL-M7-050` · [#196](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/196) `BL-M7-200` · [#197](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/197) `BL-M7-201` · [#198](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/198) `BL-M7-202` | — |
+| `S1-32` mức B · `S1-32_SPEC.md` | `M7` | [#113](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/113) `BL-M7-051` | — |
+| `S1-33` mức A · `S1-33_SPEC.md` | `M7` | `BL-M7-052` · [#199](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/199) `BL-M7-206` · [#200](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/200) `BL-M7-207` · [#201](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/201) `BL-M7-208` | — |
+| `S1-34` mức B · `S1-34_SPEC.md` | `M7` | [#115](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/115) `BL-M7-053` | — |
+| `S1-35` mức B · `S1-35_SPEC.md` | `M8` | [#122](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/122) `BL-M8-050` | Phạm vi xuất dữ liệu (định dạng, giới hạn dòng) **chưa chốt**, nên chưa tách mục xuất riêng |
+| `S1-36` mức B · `S1-36_SPEC.md` | `M8` | [#123](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/123) `BL-M8-051` | — |
+| `S1-37` mức B · `S1-37_SPEC.md` | `M9` | [#139](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/139) `BL-M9-052` | — |
+| `S1-38` mức B · `S1-38_SPEC.md` | `M8` | [#124](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/124) `BL-M8-052` | — |
+| `S1-39` mức B · `S1-39_SPEC.md` | `M9` | [#140](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/140) `BL-M9-053` | — |
+| `S1-40` mức B · `S1-40_SPEC.md` | `M10` | [#33](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/33) `BL-M10-050` | Màn bảng điều khiển migration mới có mục dựng màn; **chưa có mục cho script chuyển đổi, đối soát và chạy thử** — §4.11 |
+| `S1-41` mức B · `S1-41_SPEC.md` | `M10` | [#34](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/34) `BL-M10-051` | Như trên — phần thực thi migration và ghi lineage chưa thành mục |
+| `S1-48` mức B · `S1-48_SPEC.md` | `M1` | [#25](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/25) `BL-M1-055` | — |
+| `S1-49` mức B · `S1-49_SPEC.md` | `M1` | [#26](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/26) `BL-M1-056` | — |
+| `S1-50` mức B · `S1-50_SPEC.md` | `M1` | [#27](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/27) `BL-M1-057` | — |
+| `S1-51` mức A · `S1-51_SPEC.md` | `M5` | `BL-M5-057` · [#184](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/184) `BL-M5-221` · [#185](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/185) `BL-M5-222` · [#186](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/186) `BL-M5-223` | — |
+| `S1-52` mức B · `S1-52_SPEC.md` | `M6` | [#104](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/104) `BL-M6-054` | — |
+| `S2-01` mức B · `S2-01_SPEC.md` | `M9` | [#141](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/141) `BL-M9-054` | — |
+| `S2-02` mức A · `S2-02_SPEC.md` | `M2` | `BL-M2-052` · [#3](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/3) `BL-M2-206` · [#161](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/161) `BL-M2-207` · [#162](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/162) `BL-M2-208` | — |
+| `S2-03` mức B · `S2-03_SPEC.md` | `M2` | [#39](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/39) `BL-M2-053` · [#44](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/44) `BL-M3-002` | — |
+| `S2-04` mức B · `S2-04_SPEC.md` | `M3` | [#43](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/43) `BL-M3-001` · [#44](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/44) `BL-M3-002` · [#45](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/45) `BL-M3-003` · [#53](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/53) `BL-M3-057` | — |
+| `S2-05` mức B · `S2-05_SPEC.md` | `M3` | [#54](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/54) `BL-M3-058` | — |
+| `S2-06` mức B · `S2-06_SPEC.md` | `M3` | [#55](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/55) `BL-M3-059` | — |
+| `S2-07` mức B · `S2-07_SPEC.md` | `M4` | [#64](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/64) `BL-M4-053` | — |
+| `S2-08` mức B · `S2-08_SPEC.md` | `M4` | [#65](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/65) `BL-M4-054` | — |
+| `S2-09` mức A · `S2-09_SPEC.md` | `M4` | `BL-M4-055` · [#172](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/172) `BL-M4-215` · [#173](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/173) `BL-M4-216` · [#174](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/174) `BL-M4-217` | — |
+| `S2-10` mức B · `S2-10_SPEC.md` | `M4` | [#67](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/67) `BL-M4-056` | — |
+| `S2-11` mức B · `S2-11_SPEC.md` | `M6` | [#105](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/105) `BL-M6-055` | — |
+| `S2-14` mức B · `S2-14_SPEC.md` | `M2` | [#40](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/40) `BL-M2-054` | — |
+| `S2-15` mức B · `S2-15_SPEC.md` | `M3` | [#56](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/56) `BL-M3-060` | — |
+| `S2-16` mức B · `S2-16_SPEC.md` | `M9` | [#142](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/142) `BL-M9-055` | — |
+| `S2-17` mức B · `S2-17_SPEC.md` | `M4` | [#68](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/68) `BL-M4-057` | — |
+| `S3-01` mức B · `S3-01_SPEC.md` | `M9` | [#143](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/143) `BL-M9-056` | — |
+| `S3-02` mức B · `S3-02_SPEC.md` | `M5` | [#87](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/87) `BL-M5-058` | — |
+| `S3-03` mức A · `S3-03_SPEC.md` | `M5` | `BL-M5-059` · [#187](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/187) `BL-M5-227` · [#188](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/188) `BL-M5-228` · [#189](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/189) `BL-M5-229` | — |
+| `S3-05` mức B · `S3-05_SPEC.md` | `M5` | [#89](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/89) `BL-M5-060` | — |
+| `S3-06` mức B · `S3-06_SPEC.md` | `M5` | [#76](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/76) `BL-M5-001` · [#90](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/90) `BL-M5-061` | — |
+| `S3-07` mức B · `S3-07_SPEC.md` | `M5` | [#91](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/91) `BL-M5-062` | — |
+| chức năng nền `N4-*` — N4-18 | `DRV` | [#17](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/17) `BL-DRV-020` | — |
+| nhóm API có spec riêng của module — M1 | `M1` | [#28](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/28) `BL-M1-150` | — |
+| nhóm API có spec riêng của module — M1 | `M1` | [#29](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/29) `BL-M1-151` | — |
+| Technical Design dùng chung — N4-13 | `M1` | [#30](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/30) `BL-M1-180` | — |
+| lược đồ cơ sở dữ liệu của module — M1_DB | `M1` | [#31](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/31) `BL-M1-181` | — |
+| lược đồ cơ sở dữ liệu của module — M1_DB | `M1` | [#32](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/32) `BL-M1-182` | — |
+| lược đồ cơ sở dữ liệu của module — M10_DB | `M10` | [#35](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/35) `BL-M10-180` | — |
+| nhóm API có spec riêng của module — M2 | `M2` | [#41](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/41) `BL-M2-150` | — |
+| lược đồ cơ sở dữ liệu của module — M2_DB | `M2` | [#42](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/42) `BL-M2-180` | — |
+| nhóm API có spec riêng của module — M3 | `M3` | [#57](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/57) `BL-M3-150` | — |
+| Technical Design dùng chung — N4-47 | `M3` | [#58](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/58) `BL-M3-180` | — |
+| lược đồ cơ sở dữ liệu của module — M3_DB | `M3` | [#59](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/59) `BL-M3-181` | — |
+| lược đồ cơ sở dữ liệu của module — M3_DB | `M3` | [#60](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/60) `BL-M3-182` | — |
+| nhóm API có spec riêng của module — M4 | `M4` | [#69](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/69) `BL-M4-150` | — |
+| nhóm API có spec riêng của module — M4 | `M4` | [#70](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/70) `BL-M4-151` | — |
+| Technical Design dùng chung — N4-04 | `M4` | [#71](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/71) `BL-M4-180` | — |
+| Technical Design dùng chung — N4-46 | `M4` | [#72](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/72) `BL-M4-181` | — |
+| Technical Design dùng chung — N4-48 | `M4` | [#73](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/73) `BL-M4-182` | — |
+| lược đồ cơ sở dữ liệu của module — M4_DB | `M4` | [#74](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/74) `BL-M4-183` | — |
+| lược đồ cơ sở dữ liệu của module — M4_DB | `M4` | [#75](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/75) `BL-M4-184` | — |
+| nhóm API có spec riêng của module — M5 | `M5` | [#92](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/92) `BL-M5-150` | — |
+| nhóm API có spec riêng của module — M5 | `M5` | [#93](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/93) `BL-M5-151` | — |
+| Technical Design dùng chung — N1-39 | `M5` | [#94](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/94) `BL-M5-180` | — |
+| Technical Design dùng chung — N1-41 | `M5` | [#95](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/95) `BL-M5-181` | — |
+| lược đồ cơ sở dữ liệu của module — M5_DB | `M5` | [#96](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/96) `BL-M5-182` | — |
+| lược đồ cơ sở dữ liệu của module — M5_DB | `M5` | [#97](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/97) `BL-M5-183` | — |
+| nhóm API có spec riêng của module — M6 | `M6` | [#106](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/106) `BL-M6-150` | — |
+| Technical Design dùng chung — N1-54 | `M6` | [#107](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/107) `BL-M6-180` | — |
+| Technical Design dùng chung — N4-09 | `M6` | [#108](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/108) `BL-M6-181` | — |
+| lược đồ cơ sở dữ liệu của module — M6_DB | `M6` | [#109](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/109) `BL-M6-182` | — |
+| lược đồ cơ sở dữ liệu của module — M6_DB | `M6` | [#110](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/110) `BL-M6-183` | — |
+| lược đồ cơ sở dữ liệu của module — M6_DB | `M6` | [#111](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/111) `BL-M6-184` | — |
+| nhóm API có spec riêng của module — M7 | `M7` | [#116](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/116) `BL-M7-150` | — |
+| Technical Design dùng chung — N1-58 | `M7` | [#117](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/117) `BL-M7-180` | — |
+| Technical Design dùng chung — N1-62 | `M7` | [#118](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/118) `BL-M7-181` | — |
+| lược đồ cơ sở dữ liệu của module — M7_DB | `M7` | [#119](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/119) `BL-M7-182` | — |
+| lược đồ cơ sở dữ liệu của module — M8_DB | `M8` | [#125](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/125) `BL-M8-180` | — |
+| chức năng nền `N4-*` — N4-06 | `M9` | [#126](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/126) `BL-M9-020` | — |
+| chức năng nền `N4-*` — N4-08 | `M9` | [#127](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/127) `BL-M9-021` | — |
+| chức năng nền `N4-*` — N4-12 | `M9` | [#128](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/128) `BL-M9-022` | — |
+| chức năng nền `N4-*` — N4-16 | `M9` | [#129](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/129) `BL-M9-023` | — |
+| chức năng nền `N4-*` — N4-17 | `M9` | [#130](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/130) `BL-M9-024` | — |
+| chức năng nền `N4-*` — N4-20 | `M9` | [#131](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/131) `BL-M9-025` | — |
+| chức năng nền `N4-*` — N4-21 | `M9` | [#132](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/132) `BL-M9-026` | — |
+| chức năng nền `N4-*` — N4-22 | `M9` | [#133](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/133) `BL-M9-027` | — |
+| chức năng nền `N4-*` — N4-24 | `M9` | [#134](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/134) `BL-M9-028` | — |
+| chức năng nền `N4-*` — N4-25 | `M9` | [#135](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/135) `BL-M9-029` | — |
+| chức năng nền `N4-*` — N4-26 | `M9` | [#136](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/136) `BL-M9-030` | — |
+| nhóm API có spec riêng của module — M9 | `M9` | [#144](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/144) `BL-M9-150` | — |
+| lược đồ cơ sở dữ liệu của module — M9_DB | `M9` | [#145](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/145) `BL-M9-180` | — |
+| `ARCHITECTURE_DESIGN.md` — sơ đồ triển khai, hạ tầng AWS | — | **không thành mục** | Backlog này dừng ở mức ứng dụng. Việc hạ tầng nằm ở sheet hạ tầng của ước lượng LAB-1, ngoài phạm vi LAB-5 |
+| `ui-glossary-ja.md` — nhãn tiếng Nhật trên màn | — | **không thành mục** | Nhãn JA đi kèm từng màn, không tách việc riêng. Chỗ nhãn còn `[GIẢ ĐỊNH]` thì ghi trong mục của màn đó |
+| Wireframe HTML của LAB-4 | — | **không thành mục** | Là đầu vào để dựng màn, không phải việc phải làm |
+
+## 3. Hạng mục chịu ràng buộc đặc thù của đề
+
+Đề nêu đích danh **giới hạn giờ lái xe tải từ 2024** cho Product B. Backlog tách nó thành một
+epic riêng, và tách thêm tám ràng buộc nghiệp vụ khác thành nhãn. Nguyên tắc chọn giữa hai cách:
+**ràng buộc có vòng đời riêng và bảng riêng thì thành epic; ràng buộc bắc qua nhiều module mà
+không có dữ liệu riêng thì thành nhãn.**
+
+| Ràng buộc | Issue | Vì sao tách riêng |
+|---|---|---|
+| **Giới hạn giờ lái xe tải từ 2024** — ràng buộc đề bài nêu đích danh cho Product B | Epic `BL-DRV-000` cùng 2 mục con: [#16](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/16) `BL-DRV-001` · [#17](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/17) `BL-DRV-020` | Tách thành **một epic riêng** chứ không phải nhãn: luật này có vòng đời riêng (bản quy định đổi theo năm), có bảng riêng (`driver_hours_ledger`), và khi quy định đổi thì chỉ epic này phải sửa. Gộp vào M5 thì mỗi lần đổi luật phải lần trong 32 mục của M5 để tìm chỗ chạm. |
+| `rb-dai-nhiet` — dải nhiệt của lô phải khớp vị trí cất và phương tiện | **42 mục** mang nhãn `rb-dai-nhiet` — ví dụ `BL-M1-054` · [#28](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/28) `BL-M1-150` · [#29](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/29) `BL-M1-151` … | Chạm nhiều module (M2 nhận, M3 cất, M5 chở, M6 đo) nên không gom được vào một epic. Dùng nhãn để lọc ra khi quy định nhiệt đổi. |
+| `rb-deviation-cach-ly` — lệch nhiệt thì lô vào cách ly | **39 mục** mang nhãn `rb-deviation-cach-ly` — ví dụ `BL-M2-052` · [#39](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/39) `BL-M2-053` · [#162](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/162) `BL-M2-208` … | Cùng lý do: một luật, nhiều màn. Nhãn cho phép hỏi *mọi mục nào phải sinh sự kiện cách ly*. |
+| `rb-han-su-dung` — 消費期限 chặn, 賞味期限 cảnh báo | **25 mục** mang nhãn `rb-han-su-dung` — ví dụ [#21](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/21) `BL-M1-051` · [#31](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/31) `BL-M1-181` · `BL-M2-052` … | Đây là một trong bốn lỗi 重大エラー của LAB-1. Tách nhãn để khi test hồi quy biết đúng tập mục phải chạy lại. |
+| `rb-truy-xuat-gao-bo` — gạo phải có xuất xứ, bò phải có số cá thể | **24 mục** mang nhãn `rb-truy-xuat-gao-bo` — ví dụ `BL-M2-052` · [#41](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/41) `BL-M2-150` · [#42](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/42) `BL-M2-180` … | Luật theo **mặt hàng**, không theo màn. Nhãn là cách duy nhất gom đúng tập mục. |
+| `rb-tap-quan-hop-dong` — tập quán hợp đồng của từng khách | **22 mục** mang nhãn `rb-tap-quan-hop-dong` — ví dụ `BL-M1-053` · [#28](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/28) `BL-M1-150` · [#30](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/30) `BL-M1-180` … | Giá trị khác nhau theo khách, nên mọi mục đọc luật này phải đọc từ dữ liệu chủ chứ không hằng số trong mã. |
+| `rb-phan-bo-nguyen-tu` — phân bổ 6 bước phải nguyên tử | **16 mục** mang nhãn `rb-phan-bo-nguyen-tu` — ví dụ `BL-M4-051` · `BL-M4-052` · `BL-M4-055` … | Ràng buộc kỹ thuật bắc qua M4 và M3; tách nhãn để lúc đổi cách khoá biết hết chỗ chạm. |
+| `rb-ngoai-tuyen` — hàng đợi chứng cứ POD tối đa 8 giờ | **13 mục** mang nhãn `rb-ngoai-tuyen` — ví dụ [#76](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/76) `BL-M5-001` · [#87](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/87) `BL-M5-058` · `BL-M5-059` … | Chỉ APP-03 được phép ngoại tuyến; RFP **cấm** giao dịch kho ngoại tuyến. Nhãn giữ ranh giới đó nhìn thấy được. |
+| `rb-cam-dao-ngay` — cấm đảo ngày giao | **11 mục** mang nhãn `rb-cam-dao-ngay` — ví dụ `BL-M4-051` · [#69](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/69) `BL-M4-150` · [#70](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/70) `BL-M4-151` … | Một trong bốn lỗi 重大エラー. So với **lịch sử giao hàng**, không so với hôm nay — nhãn để test hồi quy bắt đúng tập. |
+
+**Vì sao không gộp hết thành nhãn.** Giới hạn giờ lái đổi theo bản quy định; khi bản 2024 được
+thay thì phải sửa một chỗ, chạy lại một tập test, và báo cho khách một epic. Tám ràng buộc còn
+lại không có mốc thời gian riêng như vậy.
+
 ## 4. Chỗ hở — xử lý thế nào
 
 Nguồn: báo cáo của 11 lô viết mô tả (mỗi lô bắt buộc liệt kê giá trị đã đoán, chỗ spec nói hai kiểu, trường không tra được nguồn) cộng phần soát của session chính. Phân loại theo `LAB-5 Planning.md` §3 bước 8.
 
-### 4.1 Hệ quả xuôi dòng của quyết định G1 — **để mở, trình G2**
+### 4.1 Hệ quả xuôi dòng của quyết định G1 — **đã trình và duyệt ở G2 (2026-10-26)**
 
 Quyết định tách put-away (PREMISE §1.3, §1.4, duyệt G1) có hai hệ quả mà **phản chứng ở G1 không quét tới**. Hai lô viết mô tả độc lập, ở hai module khác nhau, cùng tìm ra:
 
@@ -187,7 +339,7 @@ Bốn lỗ cắt ngang:
 | Mục **nhóm API** cần thân request/response | `BL-M4-150` (#69), `BL-M1-150` (#28), `BL-M3-150` (#57) | **[QUYẾT ĐỊNH G2] rót thêm thân API** — rút lược đồ request/response từ 83 file API Design vào chính mục, tức sang hướng B cho riêng loại này. Spec LAB-4 là tự viết nên không phạm luật cấm chép RFP |
 | **Sub-issue FE** trỏ issue cha | `BL-M7-207` (#200) | **Không, theo thiết kế.** Phép đo đọc một file nên luôn đỏ; trong kho nộp thật người đọc mở được issue cha |
 
-Ngoài ra, lỗ 1 và 3 nghĩa là backlog **thiếu hẳn một nhóm việc**: dựng dự án, môi trường, tài khoản thử, dữ liệu mẫu. Chưa thêm vào backlog vì nó **đổi số epic** — thứ G2 duyệt.
+Ngoài ra, lỗ 1 và 3 nghĩa là backlog **thiếu hẳn một nhóm việc**: dựng dự án, môi trường, tài khoản thử, dữ liệu mẫu. **Đã thêm ở B4** — epic `SETUP` 7 mục, xem §6. Khi viết mục này thì chưa thêm vì nó **đổi số epic** — thứ G2 duyệt.
 
 ### 4.9 Lỗi công thức của PREMISE §1.3 — **đã sửa sau G1**
 
@@ -238,7 +390,22 @@ thấy phép so với ước lượng cũ là một bộ kiểm thật cho bư�
 
 ---
 
-## 5. Bốn quyết định kỹ thuật — trình G2
+### 4.12 Ba chỗ hở lộ ra ở vòng đọc mù trước khi nộp
+
+Ba lượt đọc mù cuối (mỗi lượt một người chưa biết gì về dự án, chỉ được mở đúng mục cần làm)
+chỉ ra ba thứ **thiết kế LAB-4 không có**, chứ không phải mô tả issue quên chép:
+
+| Chỗ hở | Chỗ phát hiện | Xử lý |
+|---|---|---|
+| **Biểu thức của CHECK constraint.** Bảng định nghĩa bảng ở Database Design có cột, index, khoá ngoại — **không có mục nào cho CHECK**. Tên ràng buộc xuất hiện rải trong cột Note, biểu thức thì không | `BL-M9-180`, `BL-M3-181` và mọi mục lược đồ | **Để mở.** Người dựng DDL phải tự viết biểu thức rồi trình người duyệt. Không bịa vào mô tả issue, vì bịa thì mục trông đủ mà DDL vẫn sai |
+| **Giá trị đầy đủ của enum dùng chung** (`active_status`, `device_type`, `reason_category`) | `BL-M9-180`, `BL-M1-150` | **Để mở.** `BL-PLAT-002` nhận nhóm bảng `COMMON_DB`; danh sách giá trị chốt ở đó, các mục khác dẫn sang |
+| **Ma trận bật/tắt nút theo vai × trạng thái** của spec màn (mục 6.1, 6.2) không chép được vào sub-issue FE vì nó là bảng của màn, không của lớp | `BL-M7-207` | **Để mở.** Sub-issue FE nay trỏ đích danh mục cha và mục giữ hợp đồng API; chép bảng sang cả ba lớp sẽ sinh ba bản dễ lệch nhau (C1) |
+
+**Vì sao không vá bằng cách viết thêm vào mô tả.** Ba thứ trên là **quyết định thiết kế chưa có**,
+không phải thông tin đã có mà quên chép. Viết đại một biểu thức CHECK vào issue thì người đọc mù
+sẽ chấm `ĐỦ ĐỂ LÀM`, còn người dựng thật sẽ dựng sai — đổi một phép đo lấy một lỗi.
+
+## 5. Bốn quyết định kỹ thuật — đã duyệt ở G2 (2026-10-26)
 
 Bốn mục này `LAB-5 Planning.md` §1.4 đánh dấu `[ĐỀ XUẤT]`, tức **của tôi chứ không phải đề bài đòi**. Trình từng mục, không duyệt gộp (C4).
 
@@ -272,18 +439,19 @@ GitHub Project v2 không có burndown sẵn. Đề cho phép "ảnh hoặc bản
 
 ---
 
-## 6. Bằng chứng trình G2
+## 6. Bằng chứng đã trình ở G2
 
 | Thứ | Ở đâu | Trạng thái |
 |---|---|---|
-| Backlog dạng dữ liệu | `work/backlog.csv` | 184 mục — 12 epic · 124 issue · 48 sub-issue |
-| Mô tả từng mục | `work/issues/*.md` | 172 file, 2,8 MB |
+| Backlog dạng dữ liệu | `work/backlog.csv` | 201 mục — 13 epic · 140 issue · 48 sub-issue |
+| Mô tả từng mục | `work/issues/*.md` | 188 file (mọi mục không phải epic) |
 | Mẫu một epic đầy đủ | `Output/epic-mau-M2.md` | Cây epic + một mô tả nguyên văn |
 | Vòng đỏ trước khi sinh backlog | `work/checks/R8/` | 7/7 bộ kiểm đỏ vì thiếu dữ liệu, đúng kỳ vọng |
 | Vòng xanh + đọc mù lần 1 | `work/checks/R9/` | Bộ kiểm 7/7 xanh · đọc mù **9 KHÔNG · 6 ĐOÁN · 0 ĐỦ** |
 | Sau hướng C + đọc mù lần 2 | `work/checks/R10/` | Bộ kiểm 8/8 xanh · đọc mù **6 KHÔNG · 9 ĐOÁN · 0 ĐỦ** |
+| Trước khi nộp + đọc mù lần 3 | `work/checks/R20/` | Chấm theo phần *làm được ngay* của khối mới **Bắt đầu từ đâu**, trên 8 mục khó nhất: **0 KHÔNG · 6 ĐOÁN · 2 ĐỦ** — lần đầu có mục đạt `ĐỦ ĐỂ LÀM`. Phần còn `PHẢI ĐOÁN` là thiết kế chưa có, xem §4.12 |
 | Sau khi sửa công thức §1.3 | `work/checks/R11/` | Cả ba bộ kiểm xanh |
 | `rebuild.sh` của B2 | `work/checks/R7/rebuild.log`, `rebuild-lan-2.log` | exit 0 **hai lần liên tiếp** |
-| Sổ vòng test | `work/test-summary.md` | R1…R11 |
-| Sổ lỗi AI | `work/ai-log.md` | 166 dòng |
+| Sổ vòng test | `work/test-summary.md` | R1…R19 |
+| Sổ lỗi AI | `work/ai-log.md` | 216 dòng |
 

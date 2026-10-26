@@ -10,19 +10,19 @@
 > **Sprint này là giả lập.** Dự án chưa khởi động; backlog được chia từ bộ thiết kế chi tiết
 > đã có, còn kết quả sprint — mục nào xong, mục nào trượt, ngày xong — là kịch bản chọn theo
 > thứ tự phụ thuộc kỹ thuật và theo hai câu hỏi khách đang thật sự treo. Sức chứa, ngày tháng
-> và giờ của từng mục thì lấy từ kế hoạch nguồn, không bịa. Mục §3 nói rõ chỗ nào là giả lập.
+> và giờ của từng mục thì lấy từ kế hoạch nguồn, không bịa. Khung cuối §2 nói rõ chỗ nào là giả lập.
 
 ## 1. Trạng thái
 
 | Trạng thái | Số issue | Tổng SWP | Tổng giờ | Ghi chú |
 |---|---:|---:|---:|---|
-| **Done** | 5 | 59 | 378,0 | Đã đóng issue trên kho; lược đồ và API nền tảng xong trước hạn |
-| **In Progress** | 2 | 13 | 83,5 | Còn dở sang Sprint 2; một mục đang chờ khách trả lời |
-| **Todo** | 3 | 12 | 76,5 | Không bắt đầu được trong sprint — lý do ở §2 |
+| **Done** | 5 | 59 | 378,0 | Trong kịch bản: xong và đã đóng issue trên kho; lược đồ và API nền tảng xong trước hạn |
+| **In Progress** | 2 | 13 | 83,5 | Trong kịch bản: còn dở sang Sprint 2; một mục đang chờ khách trả lời |
+| **Todo** | 3 | 12 | 76,5 | Không bắt đầu được trong sprint — hai màn vì hết người (§2), một mục vì `CQ31` chưa có trả lời (§3) |
 | **Tổng** | **10** | **84** | **538,0** | |
 
-Sprint đặt **538,0 giờ**, chốt sổ còn **160,0 giờ** chưa xong — làm được
-**378,0 giờ, tức 70 % khối lượng đặt ra**.
+Sprint đặt **538,0 giờ**, chốt sổ còn **160,0 giờ** chưa xong — trong kịch bản
+hoàn tất **378,0 giờ, tức 70 % khối lượng đặt ra**.
 
 | Mục | SWP | Giờ | Trạng thái | Issue trên kho |
 |---|---:|---:|---|---|
@@ -38,7 +38,8 @@ Sprint đặt **538,0 giờ**, chốt sổ còn **160,0 giờ** chưa xong — l
 | [#138](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/138) `BL-M9-051` — S1-02 — dựng màn theo spec mức B | 4 | 25,5 | **Todo** | còn mở |
 
 Mục `Done` đã **đóng issue trên kho**, không chỉ đổi trạng thái trên bảng — để người xem đối
-chiếu được hai nơi.
+chiếu được hai nơi. **`Done` ở đây là `Done` của kịch bản:** không dòng mã nào được viết, việc
+đóng issue là một phần của giả lập.
 
 ## 2. Burndown
 
@@ -58,12 +59,12 @@ chiếu được hai nơi.
 | 9 | 53,8 | 192,0 | +138,2 |
 | 10 | 0,0 | 160,0 | +160,0 |
 
-**Thực tế bám kế hoạch đến ngày 6, rồi tách ra và không về lại.** Ba ngày đầu không có mục nào
-đóng được vì hai mục lược đồ `M1_DB` chạy song song và chỉ xong ở ngày 4 và ngày 5 — đường
-thực tế nằm **trên** đường kế hoạch suốt nửa đầu sprint. Đó là hình dạng bình thường của một
+**Đường giả lập nằm trên đường kế hoạch ngay từ ngày 1 và không bao giờ xuống dưới.** Ba ngày
+đầu không mục nào đóng được vì hai mục lược đồ `M1_DB` chạy song song, chỉ xong ở ngày 4 và
+ngày 5; khoảng cách lớn nhất là ngày 3 (+161,4 giờ), gần kế hoạch nhất là ngày 6 (+40,8 giờ). Đó là hình dạng bình thường của một
 sprint mở đầu bằng việc nền: khối lượng chỉ rơi khi cả mục xong, không rơi dần từng ngày.
 
-Chỗ lệch thật nằm ở nửa sau. Mục `BL-M1-150` (12 API của M1, 77 giờ) **chỉ bắt đầu được từ
+Chỗ lệch đáng kể trong kịch bản nằm ở nửa sau. Mục `BL-M1-150` (12 API của M1, 77 giờ) **chỉ bắt đầu được từ
 ngày 6**, sau khi lược đồ M1 xong; 5 ngày còn lại không đủ. Nó kéo theo hai màn `S1-02`,
 `S1-03` không có người làm. Cuối sprint còn 160 giờ, bằng **30 %** khối lượng đặt ra.
 

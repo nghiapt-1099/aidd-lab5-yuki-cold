@@ -1,7 +1,7 @@
 # estimate.md — chấm SWP cho backlog Yuki Cold Logistics
 
-> Trạng thái: §1–§2 đã chốt ở gate G4 (2026-10-26). §3–§5 làm ở bước quy giờ, **chưa có số** —
-> không điền tạm để tránh đọc nhầm là đã chốt.
+> Trạng thái: §1–§2 chốt ở gate G4, §3 ở G5a, §4–§5 ở G5b — cùng ngày 2026-10-26.
+> Giờ đã áp cho cả backlog và ghi lên trường `Est. hours` của bảng công việc.
 
 ## 1. Báo cáo của công cụ chấm
 
@@ -19,7 +19,7 @@
 *Độ khó* (Complexity ∈ 0·1·2·3·5·8) đo mỗi chỗ khó tới đâu. Hai trục **nhân** chứ không cộng,
 vì cái khó áp lên từng đơn vị bề rộng. Mục cha **cộng thẳng** điểm của con, không tra lại ma trận.
 
-**Điểm ban đầu do luật máy sinh, không phải AI chấm từng mục.** Luật nằm ở `work/swp/score-rule.py`:
+**Điểm ban đầu do luật máy có khai báo sinh ra, không phải một lần đoán cho từng mục.** Luật nằm ở `work/swp/score-rule.py`:
 bề rộng rút từ số đếm có thật trong mục (dòng nguồn trường, gạch DoD, số endpoint, số bảng),
 độ khó cộng từ các cờ có bằng chứng (đổi trạng thái, chạy nền, ≥5 bảng, ràng buộc ngoại tuyến,
 dựng môi trường, gọi hệ thống ngoài). Làm vậy để **mọi điểm tra ngược được về một con số đếm
@@ -66,7 +66,7 @@ ba luật lan ở trên chỉ chạm 25 mục, 176 mục còn lại chưa ai soi
 
 ## 3. Cách quy ra giờ
 
-> **Bản nháp — chờ duyệt ở G5a.** Chưa ghi giờ lên bảng công việc.
+> Quy tắc này **đã duyệt ở G5a (2026-10-26)**; giờ đã áp cho cả 201 mục và ghi lên bảng công việc.
 
 ### 3.1 Chọn quy ước đổi điểm ra giờ, không ước trực tiếp từng mục
 
@@ -165,14 +165,14 @@ phải lọc bỏ tầng cha trước; nếu không sẽ đếm hai lần.
 |---|---:|---:|---:|---|
 | `M5` — Vận tải và Giao hàng | 32 | 263 | 1 681,5 | Lõi nghiệp vụ: lập tuyến, giao hàng, chứng cứ ngoại tuyến. Epic nặng nhất, 15 mục là ba lớp của màn mức A |
 | `M4` — Đơn và Phân bổ | 21 | 166 | 1 060,5 | Phân bổ 6 bước; 5 mục lược đồ vì nhóm bảng đơn hàng rộng |
-| `M1` — Dữ liệu chủ | 19 | 135 | 862,5 | Dữ liệu chủ; chứa 2 mục làm rõ câu hỏi còn treo (`CQ31`) |
+| `M1` — Dữ liệu chủ | 19 | 135 | 862,5 | Dữ liệu chủ; chứa 1 mục làm rõ `CQ31` và 1 mục thêm cột theo `PREMISE.md` §1.2 |
 | `M3` — Tồn kho và Kho | 20 | 127 | 811,5 | Nhiều màn mức B nhất (10) — tồn kho có nhiều màn tra cứu đơn giản |
 | `M9` — Nền tảng và Bảo mật | 20 | 126 | 807,0 | 11 mục việc nền (xác thực, phân quyền, nhật ký audit, job tích hợp) |
 | `M6` — Nhiệt độ và HACCP | 18 | 124 | 793,0 | Nhiệt độ · HACCP; 5 mục lược đồ — nhóm bảng đo và cảnh báo rộng |
 | `M7` — Truy xuất và Thu hồi | 12 | 101 | 646,0 | Truy xuất và thu hồi; 6 mục là ba lớp của hai màn mức A |
 | `M2` — Nhập hàng | 10 | 67 | 428,0 | Nhập hàng; phần lớn nằm ở M3 vì tạo lô thuộc tồn kho |
 | `SETUP` — Dựng môi trường | 7 | 61 | 390,0 | Nguồn đối chiếu **còn mở**: một phần ứng với `F0-00` (API scaffolding, hạ tầng PWA) nằm trong 83,73 MM, một phần ứng với sheet hạ tầng nằm ngoài — xem §5.2 |
-| `M8` — Báo cáo | 6 | 36 | 230,5 | Báo cáo; 2 mục là câu hỏi còn treo về phạm vi xuất dữ liệu |
+| `M8` — Báo cáo | 6 | 36 | 230,5 | Báo cáo; 2 mục là thay đổi khai ở `PREMISE.md` §1.8 và §1.9, không phải màn |
 | `M10` — Chuyển đổi dữ liệu | 3 | 24 | 153,5 | Chuyển đổi dữ liệu — **mỏng hơn LAB-1 rõ rệt**, xem §5 |
 | `DRV` — Ràng buộc giờ tài xế | 2 | 8 | 51,0 | Ràng buộc giờ lái xe 2024 — tách riêng theo yêu cầu đề (hạng mục nghiệp vụ đặc thù) |
 | `PLAT` — Quy ước dùng chung | 2 | 7 | 45,0 | Quy ước API dùng chung và nhóm bảng COMMON_DB |
@@ -187,13 +187,13 @@ hệ số quản lý — **không đưa vào bảng này**; đưa vào sẽ so m
 Hai chỗ phải ghép lại trước khi so, nếu không con số nói sai:
 
 - **`F0-00` của LAB-1 nằm trong module M9** (nền tảng kiến trúc, 568 giờ), còn backlog tách
-  thành `SETUP` + `PLAT`. So thẳng M9 ↔ M9 sẽ ra −42 % — đó là **lỗi ghép**, không phải chênh thật.
+  thành `SETUP` + `PLAT`. So thẳng `M9` của backlog với M9 của LAB-1 sẽ ra **−45 %** — đó là **lỗi ghép**, không phải chênh thật.
 - **`DRV` tách riêng** theo yêu cầu đề (hạng mục chịu ràng buộc giờ lái xe 2024); ở LAB-1 nó
   nằm trong M5 (`F1-09`, `F1-30`).
 
 | Phần | LAB-1 (giờ) | LAB-5 (giờ) | Chênh | Vì sao |
 |---|---:|---:|---:|---|
-| M1 — Dữ liệu chủ | 568 | 862,5 | +52 % | Backlog nặng hơn vì **màn mức B là một mục trọn gói BE+FE+test**, còn LAB-1 tách effort theo vai trò và màn tra cứu đơn giản rơi vào đơn giá thấp. 6 màn mức B × 25,5–51 giờ đã là 230 giờ |
+| M1 — Dữ liệu chủ | 568 | 862,5 | +52 % | Backlog nặng hơn vì **màn mức B là một mục trọn gói BE+FE+test**, còn LAB-1 tách effort theo vai trò và màn tra cứu đơn giản rơi vào đơn giá thấp. 6 màn mức B cộng lại đã là 261,5 giờ |
 | M2 — Nhập hàng | 480 | 428,0 | −11 % | Khớp sát. Nhập hàng ở backlog chỉ còn phần mở phiếu và ghi kiểm; tạo lô đã chuyển sang M3 theo đúng cách LAB-1 chia |
 | M3 — Tồn kho và Kho | 910 | 811,5 | −11 % | Khớp sát, dù backlog có tới 10 màn mức B — bù lại không có mục lược đồ lớn nào |
 | M4 — Đơn và Phân bổ | 970 | 1 060,5 | +9 % | Khớp sát. Phần thuật toán phân bổ 6 bước nằm ở `BL-M4-180`, `BL-M4-181`, cùng bậc với LAB-1 |
@@ -201,7 +201,7 @@ Hai chỗ phải ghép lại trước khi so, nếu không con số nói sai:
 | M6 — Nhiệt độ và HACCP | 743 | 793,0 | +7 % | Khớp sát |
 | M7 — Truy xuất và Thu hồi | 385 | 646,0 | +68 % | Cao hơn rõ: 6 mục ba-lớp cho hai màn mức A `S1-33`, `S1-34`. LAB-1 ước thu hồi là một feature gọn, backlog mổ ra thành BE · FE · test nên lộ thêm việc |
 | M8 — Báo cáo | 314 | 230,5 | −26 % | Thấp hơn: backlog mới có 3 màn báo cáo, hai câu hỏi phạm vi xuất dữ liệu còn treo nên **chưa break hết** |
-| M9 — Nền tảng và Bảo mật · `M9` ↔ M9 trừ `F0-00` | 911 | 807,0 | −11 % | Khớp sát sau khi trừ `F0-00` ra khỏi M9 của LAB-1 — nếu không trừ thì lệch tới −42 %, và đó là lỗi so sánh chứ không phải chênh thật |
+| M9 — Nền tảng và Bảo mật · `M9` ↔ M9 trừ `F0-00` | 911 | 807,0 | −11 % | Khớp sát sau khi trừ `F0-00` ra khỏi M9 của LAB-1 — nếu không trừ thì lệch tới −45 %, và đó là lỗi so sánh chứ không phải chênh thật |
 | M10 — Chuyển đổi dữ liệu | 298 | 153,5 | −49 % | **Chênh lớn nhất và là chỗ backlog thiếu.** LAB-1 ước 298 giờ cho bảng điều khiển migration (`F1-20`) cộng thực thi + ghi lineage (`F4-02`); backlog mới có 2 màn và 1 lược đồ, chưa có mục nào cho script chuyển đổi, đối soát và chạy thử. Xem §5.1 |
 | Nền tảng và môi trường · `SETUP` + `PLAT` ↔ `F0-00` | 568 | 435,0 | −23 % | **Dòng kém chắc nhất bảng.** `F0-00` gồm event store, version hoá rule, RBAC, API scaffolding, hạ tầng PWA; backlog có phần scaffolding và môi trường (`SETUP`) cùng quy ước dùng chung (`PLAT`) nhưng **chưa có mục cho event store append-only và version hoá rule**. Một phần `SETUP` lại thuộc sheet hạ tầng, ngoài 83,73 MM — xem §5.2 |
 | **Tổng** | **7 542** | **7 960,0** | **+6 %** | Chênh +6 % **không phải phát hiện**: hệ số được chia ra từ 1.179 điểm của lát trùng (§3.2), còn bảng này cộng cả `SETUP` (390 giờ) và 5 mục làm rõ (32,5 giờ) vào vế LAB-5 |
@@ -229,11 +229,20 @@ Epic `SETUP` ứng với **cả hai**: `F0-00` trong 83,73 MM nêu đích danh *
 môi trường. Hai đoạn này không mâu thuẫn nhau — chúng chồng lấn, và `SETUP` nằm đúng chỗ
 chồng.
 
-Tôi để `SETUP` ngoài mẫu số khi chia hệ số (§3.2). **Hệ quả đo được**: đưa vào thì hệ số
-xuống 6,1 giờ/điểm, tổng thấp hơn 5 %, thứ tự epic không đổi. Dòng *Nền tảng và môi trường*
-ở bảng trên là dòng duy nhất bị ảnh hưởng, và nó cũng là dòng kém chắc nhất bảng.
+**Hai kịch bản, không chốt một số duy nhất.** Soát chéo trước khi nộp chỉ ra rằng tử số
+(7 541,8 giờ) vẫn chứa trọn `F0-00`, trong khi mẫu số lại loại `SETUP` — hai lát không tương
+ứng. Chia `SETUP` theo từng việc cho đúng `F0-00` thì cần biết `F0-00` gồm những gì ở mức
+công việc, mà nguồn **không nói**. Nên trình cả hai:
 
-Để mở chứ không chốt: cần người nghiệp vụ nói `F0-00` có bao gồm dựng môi trường chạy thử
-và đường chạy kiểm tự động hay không. Trước khi có câu trả lời, mọi con số trong mục này
-đọc kèm sai số ±5 % ở mức tổng.
+| Kịch bản | Mẫu số | Hệ số | Tổng giờ mục lá | Khi nào đúng |
+|---|---:|---:|---:|---|
+| **A — `SETUP` ngoài lát neo** | 1 179 điểm | **6,4** | 7 960,0 | Khi `F0-00` chỉ gồm mã nền tảng, còn dựng môi trường nằm ở sheet hạ tầng |
+| **B — `SETUP` trong lát neo** | 1 240 điểm | **6,1** | 7 594,5 | Khi `F0-00` đã bao gồm dựng môi trường chạy thử và đường chạy kiểm |
+
+Chênh giữa hai kịch bản là **4,6 %** ở mức tổng; **thứ tự nặng nhẹ giữa các epic không đổi**.
+
+**Bảng công việc đang mang kịch bản A (6,4).** Chọn A vì sheet hạ tầng của LAB-1 có cột
+DEVELOPMENT riêng 3,5 MM cho việc dựng môi trường — tức LAB-1 **đã** tính việc đó ở chỗ khác.
+Đây là lựa chọn có lý do, **không phải điểm đã chốt**: cần người nghiệp vụ xác nhận phạm vi
+`F0-00`. Trước khi có câu trả lời, mọi con số ở mục này đọc kèm sai số **±5 %** ở mức tổng.
 
