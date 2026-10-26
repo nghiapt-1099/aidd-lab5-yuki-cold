@@ -206,22 +206,6 @@ Hai chỗ phải ghép lại trước khi so, nếu không con số nói sai:
 | Nền tảng và môi trường · `SETUP` + `PLAT` ↔ `F0-00` | 568 | 435,0 | −23 % | **Dòng kém chắc nhất bảng.** `F0-00` gồm event store, version hoá rule, RBAC, API scaffolding, hạ tầng PWA; backlog có phần scaffolding và môi trường (`SETUP`) cùng quy ước dùng chung (`PLAT`) nhưng **chưa có mục cho event store append-only và version hoá rule**. Một phần `SETUP` lại thuộc sheet hạ tầng, ngoài 83,73 MM — xem §5.2 |
 | **Tổng** | **7 542** | **7 960,0** | **+6 %** | Chênh +6 % **không phải phát hiện**: hệ số được chia ra từ 1.179 điểm của lát trùng (§3.2), còn bảng này cộng cả `SETUP` (390 giờ) và 5 mục làm rõ (32,5 giờ) vào vế LAB-5 |
 
-### 5.2 Một chỗ hai nguồn cùng có lý — để mở, không tự chọn
-
-Epic `SETUP` ứng với **cả hai**: `F0-00` trong 83,73 MM nêu đích danh *API scaffolding* và
-*hạ tầng PWA*, còn sheet hạ tầng riêng có cột DEVELOPMENT 3,5 MM = 490 giờ cho việc dựng
-môi trường. Hai đoạn này không mâu thuẫn nhau — chúng chồng lấn, và `SETUP` nằm đúng chỗ
-chồng.
-
-Tôi để `SETUP` ngoài mẫu số khi chia hệ số (§3.2). **Hệ quả đo được**: đưa vào thì hệ số
-xuống 6,1 giờ/điểm, tổng thấp hơn 5 %, thứ tự epic không đổi. Dòng *Nền tảng và môi trường*
-ở bảng trên là dòng duy nhất bị ảnh hưởng, và nó cũng là dòng kém chắc nhất bảng.
-
-Để mở chứ không chốt: cần người nghiệp vụ nói `F0-00` có bao gồm dựng môi trường chạy thử
-và đường chạy kiểm tự động hay không. Trước khi có câu trả lời, mọi con số trong mục này
-đọc kèm sai số ±5 % ở mức tổng.
-
-
 ### 5.1 Chênh −49 % ở M10 là chỗ backlog thiếu, không phải chỗ LAB-1 ước thừa
 
 LAB-1 có hai feature cho chuyển đổi dữ liệu: `F1-20` bảng điều khiển migration và đối soát
@@ -236,4 +220,20 @@ làm con số đẹp lên mà backlog vẫn thiếu việc. Phải thêm mục �
 Hai chênh dương lớn (M1 +52 %, M7 +68 %) **không** phải chỗ thiếu của LAB-1. Chúng đến từ
 cách chia: một màn mức B ở backlog là **một mục trọn gói BE + FE + test**, nên giờ dồn vào
 một chỗ; LAB-1 rải cùng khối lượng đó qua ba vai trò với đơn giá khác nhau.
+
+
+### 5.2 Một chỗ hai nguồn cùng có lý — để mở, không tự chọn
+
+Epic `SETUP` ứng với **cả hai**: `F0-00` trong 83,73 MM nêu đích danh *API scaffolding* và
+*hạ tầng PWA*, còn sheet hạ tầng riêng có cột DEVELOPMENT 3,5 MM = 490 giờ cho việc dựng
+môi trường. Hai đoạn này không mâu thuẫn nhau — chúng chồng lấn, và `SETUP` nằm đúng chỗ
+chồng.
+
+Tôi để `SETUP` ngoài mẫu số khi chia hệ số (§3.2). **Hệ quả đo được**: đưa vào thì hệ số
+xuống 6,1 giờ/điểm, tổng thấp hơn 5 %, thứ tự epic không đổi. Dòng *Nền tảng và môi trường*
+ở bảng trên là dòng duy nhất bị ảnh hưởng, và nó cũng là dòng kém chắc nhất bảng.
+
+Để mở chứ không chốt: cần người nghiệp vụ nói `F0-00` có bao gồm dựng môi trường chạy thử
+và đường chạy kiểm tự động hay không. Trước khi có câu trả lời, mọi con số trong mục này
+đọc kèm sai số ±5 % ở mức tổng.
 
