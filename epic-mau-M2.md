@@ -1,6 +1,6 @@
 # Mẫu một epic đầy đủ — `BL-M2-000` (#1) Nhập hàng
 
-Trình ở **G2** để bạn thấy đúng thứ sẽ lên GitHub Project. Chọn epic `M2` vì nó nhỏ mà đủ loại:
+Mẫu này cho thấy đúng thứ đã lên GitHub Project. Chọn epic `M2` vì nó nhỏ mà đủ loại:
 một dòng thay đổi từ PREMISE, màn mức A có sub-issue, màn mức B, nhóm API, lược đồ DB.
 
 ## 1. Cây epic → issue → sub-issue
@@ -43,7 +43,7 @@ Ngăn xếp đã chốt ở Architecture Design của LAB-4 — mọi mục tron
 | Ngôn ngữ | **TypeScript** trên toàn monorepo | |
 | Dữ liệu | **PostgreSQL 16** — `business_event` chỉ-thêm cộng các bảng trạng thái | Ảnh POD ở object storage |
 
-**Chưa chốt, phải hỏi trước khi dựng:** công cụ migration, test runner, địa chỉ môi trường thử, tài khoản thử của từng vai, IdP thử. Chưa mục nào trong backlog nhận những việc này — xem [`task-breakdown.md`](task-breakdown.md) §4.8.
+**Chưa chốt, phải hỏi trước khi dựng:** công cụ migration, test runner, địa chỉ môi trường thử, tài khoản thử của từng vai, IdP thử. Epic `BL-SETUP-000` (7 mục) nhận những việc này — xem [`task-breakdown.md`](task-breakdown.md) §4.8.
 
 ## Mục tiêu
 
