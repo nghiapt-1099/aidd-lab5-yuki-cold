@@ -88,6 +88,31 @@ Sub-issue FE/BE **không** chép lại bảng ô của màn — chúng trỏ san
 | `BL-SETUP-000` (#15) | Nền tảng dự án và dữ liệu mẫu | 7 | 0 | — |
 **Tổng: 212 mục — 13 epic · 151 issue · 48 sub-issue.** Khối số trong mỗi epic: `000` epic · `001–019` thay đổi từ PREMISE và issue làm rõ · `010–019` việc nền (epic `SETUP`) · `020–039` function nền · `050–149` màn · `150–179` nhóm API · `180–199` Technical Design và Database Design · `200–299` sub-issue. Mục nhóm API và mục lược đồ **chia phần theo ngân sách độ dài** vì body một issue GitHub tối đa 65 536 ký tự.
 
+### 1.13 Ba mục vượt ngưỡng hợp lý — khai ra, chưa tách [QUYẾT ĐỊNH 2026-10-26]
+
+Nguyên tắc §1.9 định nghĩa **loại việc** của từng khối số, nhưng **không đặt trần độ lớn**.
+Hệ quả: ba mục nặng 24 điểm, tức khoảng 153 giờ mỗi mục.
+
+| Mục | Chứa | Vì sao to |
+|---|---|---|
+| `BL-M5-150` | 11 API (`API-M5-002` … `-011`, `-024`) | Lần chia trước cắt theo **độ dài thân mục** cho vừa trần 65 536 ký tự của GitHub, không cắt theo nhóm nghiệp vụ |
+| `BL-M5-182` | 7 bảng nhóm tuyến và giờ tài xế | Cùng lý do |
+| `BL-M5-183` | 6 bảng nhóm giao hàng và ngoại lệ | Cùng lý do |
+
+**Đo so với sức chứa sprint:** một sprint hai tuần của đội này chứa 565 giờ (§kịch bản sprint).
+Một mục 153 giờ chiếm hơn một phần tư sprint — khó gọi là "đủ nhỏ để theo dõi".
+
+**Chưa tách, và đây là lý do.** Tách đúng cách là cắt theo cụm khoá ngoại và nhóm nghiệp vụ,
+không phải cắt theo độ dài. Việc đó kéo theo chấm lại điểm, ghi lại giờ cho cả 212 mục và sinh
+lại mọi bảng trong bộ nộp — **tổng SWP sẽ tăng**, vì ma trận là phép nhân và phần việc chung
+của mỗi mục lặp lại. Người duyệt chọn giữ nguyên và khai ra, thay vì chạy thêm một vòng sát
+lúc nộp.
+
+**Việc phải làm ở vòng chia sau:** thêm vào §1 một luật trần độ lớn (ví dụ *quá 16 điểm thì
+tách, trừ khi nói rõ vì sao không tách được*) cộng một luật kiểm máy cho nó. Không có luật đó
+thì vòng sau lại sinh ra mục 24 điểm mà bộ kiểm vẫn xanh — đúng họ lỗi "bộ kiểm chỉ kiểm thứ
+mình nghĩ ra để kiểm".
+
 ## 2. Spec → issue
 
 Mỗi dòng là một đơn vị spec của LAB-4 và những mục backlog sinh ra từ nó. Cột cuối ghi **phần
