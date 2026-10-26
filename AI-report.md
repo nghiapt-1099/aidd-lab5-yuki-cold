@@ -3,8 +3,8 @@
 Ba phần theo yêu cầu đề: (1) giao việc cho AI ra sao, (2) soát output ra sao và bắt được gì,
 (3) chỗ nào hiệu quả, chỗ nào chưa.
 
-**Hai con số đặt trước cho dễ đọc phần sau:** sổ lỗi AI của riêng LAB-5 có **213 dòng**, và bộ
-kiểm chạy **18 vòng** (`R1`…`R18`). Hai file này nằm trong thư mục làm việc, **không nộp**:
+**Hai con số đặt trước cho dễ đọc phần sau:** sổ lỗi AI của riêng LAB-5 có **216 dòng**, và bộ
+kiểm chạy **19 vòng** (`R1`…`R19`). Hai file này nằm trong thư mục làm việc, **không nộp**:
 `work/ai-log.md` và `work/test-summary.md`.
 
 ## 1. Giao việc cho AI
@@ -402,17 +402,17 @@ Hai việc này **không có prompt nào**, vì chúng tất định:
 
 ### 2.2 Phát hiện gì
 
-Sổ lỗi 213 dòng. Phân loại theo từ khoá ở cột *"Phát hiện bằng gì"*:
+Sổ lỗi 216 dòng. Phân loại theo từ khoá ở cột *"Phát hiện bằng gì"*:
 
 | Phát hiện bằng | Số dòng |
 |---|---:|
 | Review chéo Codex | ít nhất 60 |
-| Bộ kiểm máy | ít nhất 45 |
+| Bộ kiểm máy | ít nhất 19 |
+| Chính agent tự khai | ít nhất 16 |
 | Đọc mù | ít nhất 15 |
 | Người duyệt | ít nhất 12 |
-| Chính agent tự khai | ít nhất 11 |
 
-*Khoảng 60 dòng còn lại không khớp từ khoá nào — phần lớn là "session chính đọc lại nguồn rồi
+*Khoảng 94 dòng còn lại không khớp từ khoá nào — phần lớn là "session chính đọc lại nguồn rồi
 thấy sai", cộng vài dòng bị lệch cột vì dấu `|` nằm trong backtick. Nên các con số trên là
 **cận dưới**, không phải thống kê chính xác.*
 
