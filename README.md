@@ -13,10 +13,12 @@ Backlog cho hệ thống hỗ trợ nghiệp vụ chuỗi lạnh thực phẩm, 
 | Tiền đề: thiết kế đổi ở đâu so với bản trước | [`Output/PREMISE.md`](Output/PREMISE.md) |
 | Chấm điểm khối lượng (SWP) và năm mục người kiểm | [`Output/estimate.md`](Output/estimate.md) |
 | Báo cáo chấm điểm đầy đủ, mở offline | [`Output/swp-report/swp-lab5-2026-10-26.html`](Output/swp-report/swp-lab5-2026-10-26.html) |
+| Báo cáo tiến độ Sprint 1 (giả lập) | [`Output/progress-report.md`](Output/progress-report.md) |
 
 ## Cấu trúc backlog
 
-13 epic · 140 issue · 48 sub-issue. Mã `BL-{epic}-{nnn}` là khoá ổn định; số `#` là issue
+13 epic · 140 issue · 48 sub-issue. Hai Iteration đã chạy giả lập: `Inc 0 — nền tảng`
+(7 mục, xong) và `Sprint 1` (10 mục, 5 xong). Mã `BL-{epic}-{nnn}` là khoá ổn định; số `#` là issue
 trên kho này. Màn mức A tách sub-issue theo lớp BE · FE · test; màn mức B một issue.
 
 ## Thứ tài liệu này **không** chứa
