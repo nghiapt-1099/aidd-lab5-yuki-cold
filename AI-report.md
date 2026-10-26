@@ -8,8 +8,8 @@ mọi dòng trong bộ nộp. Việc nào do AI làm thì gọi tên rõ: *sessi
 viết script, *subagent (Sonnet)* làm phần khối lượng, *Codex* soát chéo. Mọi quyết định ở tám
 gate `G0`…`G7` là của tôi, ghi ngày và chữ ký trong `work/ai-log.md`.
 
-**Hai con số đặt trước cho dễ đọc phần sau:** sổ lỗi AI của riêng LAB-5 có **218 dòng**, và bộ
-kiểm chạy **19 vòng** (`R1`…`R19`). Hai file này nằm trong thư mục làm việc, **không nộp**:
+**Hai con số đặt trước cho dễ đọc phần sau:** sổ lỗi AI của riêng LAB-5 có **223 dòng**, và bộ
+kiểm chạy **21 vòng** (`R1`…`R21`). Hai file này nằm trong thư mục làm việc, **không nộp**:
 `work/ai-log.md` và `work/test-summary.md`.
 
 ## 1. Giao việc cho AI
@@ -23,7 +23,7 @@ kiểm chạy **19 vòng** (`R1`…`R19`). Hai file này nằm trong thư mục 
 | Review chéo | Codex (`codex:codex-rescue`) | Soát độc lập, không thấy quá trình suy nghĩ của session chính |
 | Công cụ chấm điểm | skill `tkm:estimate-swp` | Chấm SWP, chọn mục mẫu, sinh báo cáo HTML |
 
-**Việc tất định thì viết script, không giao AI.** Sinh 201 mục, rót nội dung tham chiếu, đổi
+**Việc tất định thì viết script, không giao AI.** Sinh 212 mục, rót nội dung tham chiếu, đổi
 điểm ra giờ, ghi lên bảng công việc, mọi bộ kiểm — đều là script. AI chỉ làm phần cần đọc hiểu.
 
 ### 1.2 Khuôn một prompt giao việc
@@ -448,22 +448,22 @@ Hai việc này **không có prompt nào**, vì chúng tất định:
 | Mỗi gate `G0`…`G7` | Người duyệt đọc bằng chứng rồi nói "Duyệt". **Không gộp gate** — 8 gate, 8 lần dừng |
 | Sau mỗi output của subagent | Session chính (Opus) soát **trước khi** trình gate |
 | Chấm SWP | Người duyệt kiểm **5 mục mẫu**, hai lượt mỗi mục (mức khó trước, số điểm sau) |
-| Quy giờ | Người duyệt duyệt **quy tắc** trước khi áp cho 201 mục |
+| Quy giờ | Người duyệt duyệt **quy tắc** trước khi áp cho toàn backlog |
 | Kịch bản sprint | Người duyệt duyệt **trước khi** đụng vào bảng công việc public |
 
 ### 2.2 Phát hiện gì
 
-Sổ lỗi 218 dòng. Phân loại theo từ khoá ở cột *"Phát hiện bằng gì"*:
+Sổ lỗi 223 dòng. Phân loại theo từ khoá ở cột *"Phát hiện bằng gì"*:
 
 | Phát hiện bằng | Số dòng |
 |---|---:|
-| Review chéo Codex | ít nhất 61 |
+| Review chéo Codex | ít nhất 62 |
 | Bộ kiểm máy | ít nhất 20 |
+| Đọc mù | ít nhất 18 |
 | Chính agent tự khai | ít nhất 16 |
-| Đọc mù | ít nhất 15 |
 | Người duyệt | ít nhất 12 |
 
-*Khoảng 94 dòng còn lại không khớp từ khoá nào — phần lớn là "session chính đọc lại nguồn rồi
+*Khoảng 95 dòng còn lại không khớp từ khoá nào — phần lớn là "session chính đọc lại nguồn rồi
 thấy sai", cộng vài dòng bị lệch cột vì dấu `|` nằm trong backtick. Nên các con số trên là
 **cận dưới**, không phải thống kê chính xác.*
 
@@ -498,7 +498,7 @@ ghi `In Progress` chữ P hoa (#209). Lần thứ ba suýt ghi hỏng board publ
 ### 3.1 Chỗ tin là hiệu quả
 
 **Đỏ trước, xanh sau — áp cho cả tài liệu, không riêng code.** Mỗi bước viết bộ kiểm **trước**
-khi có dữ liệu, chạy cho nó đỏ, rồi mới làm. 19 vòng kiểm, không vòng nào ghi đè vòng trước.
+khi có dữ liệu, chạy cho nó đỏ, rồi mới làm. 21 vòng kiểm, không vòng nào ghi đè vòng trước.
 Nhờ vậy "xong" là một mã thoát, không phải một câu tự nhận.
 
 **Đọc mù là phép đo đắt nhất và đáng nhất.** Nó đo thứ bộ kiểm máy không đo được: *một người
