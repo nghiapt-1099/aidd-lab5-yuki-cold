@@ -11,6 +11,8 @@ Backlog cho hệ thống hỗ trợ nghiệp vụ chuỗi lạnh thực phẩm, 
 | Cách chia backlog, chỗ hở, câu hỏi chờ khách | [`Output/task-breakdown.md`](Output/task-breakdown.md) |
 | Mẫu một epic đầy đủ | [`Output/epic-mau-M2.md`](Output/epic-mau-M2.md) |
 | Tiền đề: thiết kế đổi ở đâu so với bản trước | [`Output/PREMISE.md`](Output/PREMISE.md) |
+| Chấm điểm khối lượng (SWP) và năm mục người kiểm | [`Output/estimate.md`](Output/estimate.md) |
+| Báo cáo chấm điểm đầy đủ, mở offline | [`Output/swp-report/swp-lab5-2026-10-26.html`](Output/swp-report/swp-lab5-2026-10-26.html) |
 
 ## Cấu trúc backlog
 
