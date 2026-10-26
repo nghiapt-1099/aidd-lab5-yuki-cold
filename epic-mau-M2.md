@@ -91,8 +91,8 @@ Rút từ `system-design/database-design/*_DB.md` §4.x của LAB-4.
 
 | No. | Tên khoá ngoại | Cột | Bảng đích | Cột đích | Note |
 |---|---|---|---|---|---|
-| 1 | `fk_inbound_appointment_supplier_id` | `supplier_id` | [`supplier`](../m1-master-data/M1_DB.md#43-supplier) (M1_DB) | `supplier_id` | ON DELETE RESTRICT |
-| 2 | `fk_inbound_appointment_created_by` | `created_by` | [`user_account`](../m9-platform-security/M9_DB.md#41-user_account) (M9_DB) | `user_account_id` | ON DELETE RESTRICT |
+| 1 | `fk_inbound_appointment_supplier_id` | `supplier_id` | `supplier` (M1_DB) | `supplier_id` | ON DELETE RESTRICT |
+| 2 | `fk_inbound_appointment_created_by` | `created_by` | `user_account` (M9_DB) | `user_account_id` | ON DELETE RESTRICT |
 
 ### `receipt` — nguồn `M2_DB.md`
 
@@ -125,9 +125,9 @@ Rút từ `system-design/database-design/*_DB.md` §4.x của LAB-4.
 | No. | Tên khoá ngoại | Cột | Bảng đích | Cột đích | Note |
 |---|---|---|---|---|---|
 | 1 | `fk_receipt_appointment_id` | `appointment_id` | [`inbound_appointment`](#41-inbound_appointment) | `appointment_id` | ON DELETE RESTRICT |
-| 2 | `fk_receipt_supplier_id` | `supplier_id` | [`supplier`](../m1-master-data/M1_DB.md#43-supplier) (M1_DB) | `supplier_id` | ON DELETE RESTRICT |
-| 3 | `fk_receipt_completed_by` | `completed_by` | [`user_account`](../m9-platform-security/M9_DB.md#41-user_account) (M9_DB) | `user_account_id` | ON DELETE RESTRICT |
-| 4 | `fk_receipt_created_by` | `created_by` | [`user_account`](../m9-platform-security/M9_DB.md#41-user_account) (M9_DB) | `user_account_id` | ON DELETE RESTRICT |
+| 2 | `fk_receipt_supplier_id` | `supplier_id` | `supplier` (M1_DB) | `supplier_id` | ON DELETE RESTRICT |
+| 3 | `fk_receipt_completed_by` | `completed_by` | `user_account` (M9_DB) | `user_account_id` | ON DELETE RESTRICT |
+| 4 | `fk_receipt_created_by` | `created_by` | `user_account` (M9_DB) | `user_account_id` | ON DELETE RESTRICT |
 
 ### `receipt_line` — nguồn `M2_DB.md`
 
@@ -183,12 +183,12 @@ Rút từ `system-design/database-design/*_DB.md` §4.x của LAB-4.
 | No. | Tên khoá ngoại | Cột | Bảng đích | Cột đích | Note |
 |---|---|---|---|---|---|
 | 1 | `fk_receipt_line_receipt_id` | `receipt_id` | [`receipt`](#42-receipt) | `receipt_id` | ON DELETE RESTRICT |
-| 2 | `fk_receipt_line_sku_id` | `sku_id` | [`sku`](../m1-master-data/M1_DB.md#41-sku) (M1_DB) | `sku_id` | ON DELETE RESTRICT |
-| 3 | `fk_receipt_line_reason_code` | `reason_code` | [`reason_code`](../COMMON_DB.md#47-reason_code) (COMMON_DB) | `reason_code` | ON DELETE RESTRICT |
-| 4 | `fk_receipt_line_location_id` | `location_id` | [`location`](../m1-master-data/M1_DB.md#45-location) (M1_DB) | `location_id` | ON DELETE RESTRICT |
-| 5 | `fk_receipt_line_policy_version_id` | `policy_version_id` | [`policy_version`](../COMMON_DB.md#44-policy_version) (COMMON_DB) | `policy_version_id` | ON DELETE RESTRICT |
-| 6 | `fk_receipt_line_qty_mismatch_approved_by` | `qty_mismatch_approved_by` | [`user_account`](../m9-platform-security/M9_DB.md#41-user_account) (M9_DB) | `user_account_id` | ON DELETE RESTRICT |
-| 7 | `fk_receipt_line_confirmed_by` | `confirmed_by` | [`user_account`](../m9-platform-security/M9_DB.md#41-user_account) (M9_DB) | `user_account_id` | ON DELETE RESTRICT |
+| 2 | `fk_receipt_line_sku_id` | `sku_id` | `sku` (M1_DB) | `sku_id` | ON DELETE RESTRICT |
+| 3 | `fk_receipt_line_reason_code` | `reason_code` | `reason_code` (COMMON_DB) | `reason_code` | ON DELETE RESTRICT |
+| 4 | `fk_receipt_line_location_id` | `location_id` | `location` (M1_DB) | `location_id` | ON DELETE RESTRICT |
+| 5 | `fk_receipt_line_policy_version_id` | `policy_version_id` | `policy_version` (COMMON_DB) | `policy_version_id` | ON DELETE RESTRICT |
+| 6 | `fk_receipt_line_qty_mismatch_approved_by` | `qty_mismatch_approved_by` | `user_account` (M9_DB) | `user_account_id` | ON DELETE RESTRICT |
+| 7 | `fk_receipt_line_confirmed_by` | `confirmed_by` | `user_account` (M9_DB) | `user_account_id` | ON DELETE RESTRICT |
 | 8 | `fk_receipt_line_held_lot_id` | `held_lot_id` | [`lot`](#44-lot) | `lot_id` | ON DELETE RESTRICT. Lô tạm giữ sinh từ `qty_held`; vòng với `fk_lot_receipt_line_id` được tạo bằng DEFERRABLE INITIALLY DEFERRED (hai dòng cùng transaction xác nhận) |
 
 ### `lot` — nguồn `M2_DB.md`
@@ -236,9 +236,9 @@ Rút từ `system-design/database-design/*_DB.md` §4.x của LAB-4.
 
 | No. | Tên khoá ngoại | Cột | Bảng đích | Cột đích | Note |
 |---|---|---|---|---|---|
-| 1 | `fk_lot_sku_id` | `sku_id` | [`sku`](../m1-master-data/M1_DB.md#41-sku) (M1_DB) | `sku_id` | ON DELETE RESTRICT |
-| 2 | `fk_lot_supplier_id` | `supplier_id` | [`supplier`](../m1-master-data/M1_DB.md#43-supplier) (M1_DB) | `supplier_id` | ON DELETE RESTRICT |
-| 3 | `fk_lot_location` | `location` | [`location`](../m1-master-data/M1_DB.md#45-location) (M1_DB) | `location_id` | ON DELETE RESTRICT. Cột đặt tên `location` theo RFP p.50 nhưng là khoá ngoại tới `location.location_id` |
+| 1 | `fk_lot_sku_id` | `sku_id` | `sku` (M1_DB) | `sku_id` | ON DELETE RESTRICT |
+| 2 | `fk_lot_supplier_id` | `supplier_id` | `supplier` (M1_DB) | `supplier_id` | ON DELETE RESTRICT |
+| 3 | `fk_lot_location` | `location` | `location` (M1_DB) | `location_id` | ON DELETE RESTRICT. Cột đặt tên `location` theo RFP p.50 nhưng là khoá ngoại tới `location.location_id` |
 | 4 | `fk_lot_receipt_line_id` | `receipt_line_id` | [`receipt_line`](#43-receipt_line) | `receipt_line_id` | ON DELETE RESTRICT |
 
 ### `business_event` — nguồn `COMMON_DB.md` *(bảng của nhóm khác, mục này chỉ tham chiếu)*
@@ -282,10 +282,10 @@ Rút từ `system-design/database-design/*_DB.md` §4.x của LAB-4.
 
 | No. | Tên khoá ngoại | Cột | Bảng đích | Cột đích | Note |
 |---|---|---|---|---|---|
-| 1 | `fk_business_event_actor_id` | `actor_id` | [`user_account`](./m9-platform-security/M9_DB.md#41-user_account) (M9_DB) | `user_account_id` | ON DELETE RESTRICT — người dùng chỉ bị vô hiệu hoá, không xoá |
-| 2 | `fk_business_event_approver_id` | `approver_id` | [`user_account`](./m9-platform-security/M9_DB.md#41-user_account) (M9_DB) | `user_account_id` | ON DELETE RESTRICT |
-| 3 | `fk_business_event_actor_role` | `actor_role` | [`role`](./m9-platform-security/M9_DB.md#42-role) (M9_DB) | `role_code` | ON DELETE RESTRICT |
-| 4 | `fk_business_event_device_id` | `device_id` | [`device`](./m1-master-data/M1_DB.md#46-device) (M1_DB) | `device_id` | ON DELETE RESTRICT |
+| 1 | `fk_business_event_actor_id` | `actor_id` | `user_account` (M9_DB) | `user_account_id` | ON DELETE RESTRICT — người dùng chỉ bị vô hiệu hoá, không xoá |
+| 2 | `fk_business_event_approver_id` | `approver_id` | `user_account` (M9_DB) | `user_account_id` | ON DELETE RESTRICT |
+| 3 | `fk_business_event_actor_role` | `actor_role` | `role` (M9_DB) | `role_code` | ON DELETE RESTRICT |
+| 4 | `fk_business_event_device_id` | `device_id` | `device` (M1_DB) | `device_id` | ON DELETE RESTRICT |
 | 5 | `fk_business_event_rule_version_id` | `rule_version_id` | [`policy_version`](#44-policy_version) | `policy_version_id` | ON DELETE RESTRICT |
 | 6 | `fk_business_event_reason_code` | `reason_code` | [`reason_code`](#47-reason_code) | `reason_code` | ON DELETE RESTRICT |
 | 7 | `fk_business_event_reversal_of` | `reversal_of` | [`business_event`](#41-business_event) | `business_event_id` | Tự tham chiếu; ON DELETE RESTRICT |
