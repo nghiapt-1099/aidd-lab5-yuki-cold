@@ -10,10 +10,10 @@
 | Báo cáo HTML | [`swp-report/swp-lab5-2026-10-26.html`](swp-report/swp-lab5-2026-10-26.html) — tự chứa, mở offline, không gọi tài nguyên ngoài |
 | Nguồn chấm | GitHub Project `https://github.com/users/nghiapt-1099/projects/1` — **chính bảng công việc**, không phải danh sách rời |
 | Mô hình điểm | `standard-work-point` · ma trận `swp-matrix-v2` — SWP = ô tra của Bề rộng × Độ khó, **không cộng hai trục** |
-| Phạm vi | 201 mục: **172 mục chấm trực tiếp** + **29 mục cha** lấy tổng của con |
-| Tổng SWP sau hiệu chỉnh | **1245** (trước khi người kiểm: 1182) |
+| Phạm vi | 212 mục: **183 mục chấm trực tiếp** + **29 mục cha** lấy tổng của con |
+| Tổng SWP sau hiệu chỉnh | **1288**. Vòng chấm B5 cho 1245 trên 172 mục (trước khi người kiểm: 1182); 11 mục thêm sau vòng soát chéo mang thêm 43 điểm, chấm bằng **cùng luật máy** và cùng ba luật hiệu chỉnh |
 | Mục `needs-breakdown` | **0** — mọi mục cha đều có con |
-| Ghi vào Project | trường `Point` của cả 201 mục, do Agent ghi sau khi người kiểm xong (prompt nguyên văn: `work/prompts/swp-ghi-point.md` — tài liệu nội bộ, không nộp) |
+| Ghi vào Project | trường `Point` của cả 212 mục, do Agent ghi sau khi người kiểm xong (prompt nguyên văn: `work/prompts/swp-ghi-point.md` — tài liệu nội bộ, không nộp) |
 
 **Cách đọc hai trục.** *Bề rộng* (Scope ∈ 1·2·3·5·8·13) đo việc phải động vào bao nhiêu chỗ.
 *Độ khó* (Complexity ∈ 0·1·2·3·5·8) đo mỗi chỗ khó tới đâu. Hai trục **nhân** chứ không cộng,
@@ -55,7 +55,7 @@ tầng **trùng khớp đúng chữ ký**, không áp bằng một độ lệch 
 | `cal-003` | #30 | Unknown · feature · `single-component` · `stateful` | bề rộng +1 bậc | 10 mục khác |
 | | | | **tổng đổi điểm** | **25 mục** (3 mục mẫu + 22 mục lan) |
 
-Tổng đi từ **1182 → 1245**, tăng 5,3 %. Tăng chứ không giảm, vì hai lệch nâng bề rộng
+Ở vòng chấm B5, tổng đi từ **1182 → 1245**, tăng 5,3 %. Tăng chứ không giảm, vì hai lệch nâng bề rộng
 chạm nhiều mục hơn một lệch hạ độ khó.
 
 **Chỗ phương pháp này còn yếu — tự khai.** Chạy ở mức `medium` nên **không có người chấm
@@ -66,14 +66,14 @@ ba luật lan ở trên chỉ chạm 25 mục, 176 mục còn lại chưa ai soi
 
 ## 3. Cách quy ra giờ
 
-> Quy tắc này **đã duyệt ở G5a (2026-10-26)**; giờ đã áp cho cả 201 mục và ghi lên bảng công việc.
+> Quy tắc này **đã duyệt ở G5a (2026-10-26)**; giờ đã áp cho cả 212 mục và ghi lên bảng công việc.
 
 ### 3.1 Chọn quy ước đổi điểm ra giờ, không ước trực tiếp từng mục
 
 Đề cho hai đường: ước giờ thẳng từ nội dung mục, hoặc đặt quy ước đổi SWP ra giờ. Tôi chọn
 **quy ước**, vì ba lẽ:
 
-1. **Ước trực tiếp 201 mục là lần đoán thứ hai, không tra ngược được về gì.** SWP đã có đường
+1. **Ước trực tiếp hơn 200 mục là lần đoán thứ hai, không tra ngược được về gì.** SWP đã có đường
    tra ngược — về số đếm trong mục, rồi về bảng nguồn trường và DoD. Đoán lại giờ từ đầu là
    vứt đường đó đi và thay bằng cảm giác lúc đọc.
 2. **Phải tất định.** Cùng một mục, chạy lại phải ra cùng một số. Quy ước làm được; ước trực
@@ -89,7 +89,7 @@ Hệ số **không bịa**. Nó là thương của hai con số có nguồn:
 |---|---:|---|
 | Một tháng công bằng bao nhiêu giờ | 20 ngày × 7 giờ = **140 giờ** | `effort-estimation/06-appendix.md` — *Working days in a month 20* · *Working hours in a day 7* [FACT] |
 | Phần LAB-1 trùng với backlog | BE 33,06 + FE 20,81 = 53,87 MM = **7.541,8 giờ** | `wbs/00-wbs-by-feature.csv`, cộng 44 dòng feature [FACT] |
-| Phần SWP trùng tương ứng | 1.245 − 61 (epic `SETUP`) − 5 (mục làm rõ) = **1.179 điểm** | `work/swp/payload-cal.json` |
+| Phần SWP trùng tương ứng **lúc chốt ở G5a** | 1 245 − 61 (epic `SETUP`) − 5 (mục làm rõ) = **1 179 điểm** | `work/swp/payload-cal.json` |
 | **Hệ số** | 7.541,8 ÷ 1.179 = 6,396 → **6,4 giờ/điểm** | |
 
 **Vì sao chỉ lấy BE + FE làm lát neo.** Backlog này là việc *dựng*: lớp BE, lớp FE, lớp test
@@ -163,20 +163,20 @@ phải lọc bỏ tầng cha trước; nếu không sẽ đếm hai lần.
 
 | Epic | Số issue | Tổng SWP | Tổng giờ | Ghi chú |
 |---|---:|---:|---:|---|
-| `M5` — Vận tải và Giao hàng | 32 | 263 | 1 681,5 | Lõi nghiệp vụ: lập tuyến, giao hàng, chứng cứ ngoại tuyến. Epic nặng nhất, 15 mục là ba lớp của màn mức A |
-| `M4` — Đơn và Phân bổ | 21 | 166 | 1 060,5 | Phân bổ 6 bước; 5 mục lược đồ vì nhóm bảng đơn hàng rộng |
+| `M5` — Vận tải và Giao hàng | 33 | 264 | 1 688,0 | Lõi nghiệp vụ: lập tuyến, giao hàng, chứng cứ ngoại tuyến. Epic nặng nhất, 15 mục là ba lớp của màn mức A |
+| `M4` — Đơn và Phân bổ | 23 | 168 | 1 073,5 | Phân bổ 6 bước; 5 mục lược đồ vì nhóm bảng đơn hàng rộng |
 | `M1` — Dữ liệu chủ | 19 | 135 | 862,5 | Dữ liệu chủ; chứa 1 mục làm rõ `CQ31` và 1 mục thêm cột theo `PREMISE.md` §1.2 |
+| `M9` — Nền tảng và Bảo mật | 21 | 134 | 858,0 | 11 mục việc nền (xác thực, phân quyền, nhật ký audit, job tích hợp) |
 | `M3` — Tồn kho và Kho | 20 | 127 | 811,5 | Nhiều màn mức B nhất (10) — tồn kho có nhiều màn tra cứu đơn giản |
-| `M9` — Nền tảng và Bảo mật | 20 | 126 | 807,0 | 11 mục việc nền (xác thực, phân quyền, nhật ký audit, job tích hợp) |
-| `M6` — Nhiệt độ và HACCP | 18 | 124 | 793,0 | Nhiệt độ · HACCP; 5 mục lược đồ — nhóm bảng đo và cảnh báo rộng |
-| `M7` — Truy xuất và Thu hồi | 12 | 101 | 646,0 | Truy xuất và thu hồi; 6 mục là ba lớp của hai màn mức A |
-| `M2` — Nhập hàng | 10 | 67 | 428,0 | Nhập hàng; phần lớn nằm ở M3 vì tạo lô thuộc tồn kho |
+| `M6` — Nhiệt độ và HACCP | 19 | 125 | 799,5 | Nhiệt độ · HACCP; 5 mục lược đồ — nhóm bảng đo và cảnh báo rộng |
+| `M7` — Truy xuất và Thu hồi | 13 | 102 | 652,5 | Truy xuất và thu hồi; 6 mục là ba lớp của hai màn mức A |
+| `M2` — Nhập hàng | 11 | 68 | 434,5 | Nhập hàng; phần lớn nằm ở M3 vì tạo lô thuộc tồn kho |
 | `SETUP` — Dựng môi trường | 7 | 61 | 390,0 | Nguồn đối chiếu **còn mở**: một phần ứng với `F0-00` (API scaffolding, hạ tầng PWA) nằm trong 83,73 MM, một phần ứng với sheet hạ tầng nằm ngoài — xem §5.2 |
-| `M8` — Báo cáo | 6 | 36 | 230,5 | Báo cáo; 2 mục là thay đổi khai ở `PREMISE.md` §1.8 và §1.9, không phải màn |
-| `M10` — Chuyển đổi dữ liệu | 3 | 24 | 153,5 | Chuyển đổi dữ liệu — **mỏng hơn LAB-1 rõ rệt**, xem §5 |
+| `M10` — Chuyển đổi dữ liệu | 5 | 49 | 313,5 | Chuyển đổi dữ liệu — **mỏng hơn LAB-1 rõ rệt**, xem §5 |
+| `M8` — Báo cáo | 7 | 37 | 237,0 | Báo cáo; 2 mục là thay đổi khai ở `PREMISE.md` §1.8 và §1.9, không phải màn |
+| `PLAT` — Quy ước dùng chung | 3 | 10 | 64,0 | Quy ước API dùng chung và nhóm bảng COMMON_DB |
 | `DRV` — Ràng buộc giờ tài xế | 2 | 8 | 51,0 | Ràng buộc giờ lái xe 2024 — tách riêng theo yêu cầu đề (hạng mục nghiệp vụ đặc thù) |
-| `PLAT` — Quy ước dùng chung | 2 | 7 | 45,0 | Quy ước API dùng chung và nhóm bảng COMMON_DB |
-| **Tổng** | **172** | **1245** | **7 960,0** | = 56,9 MM theo đơn vị LAB-1 (140 giờ/MM) |
+| **Tổng** | **183** | **1288** | **8 235,5** | = 58,8 MM theo đơn vị LAB-1 (140 giờ/MM) |
 
 ## 5. So với ước lượng LAB-1
 
@@ -194,17 +194,17 @@ Hai chỗ phải ghép lại trước khi so, nếu không con số nói sai:
 | Phần | LAB-1 (giờ) | LAB-5 (giờ) | Chênh | Vì sao |
 |---|---:|---:|---:|---|
 | M1 — Dữ liệu chủ | 568 | 862,5 | +52 % | Backlog nặng hơn vì **màn mức B là một mục trọn gói BE+FE+test**, còn LAB-1 tách effort theo vai trò và màn tra cứu đơn giản rơi vào đơn giá thấp. 6 màn mức B cộng lại đã là 261,5 giờ |
-| M2 — Nhập hàng | 480 | 428,0 | −11 % | Khớp sát. Nhập hàng ở backlog chỉ còn phần mở phiếu và ghi kiểm; tạo lô đã chuyển sang M3 theo đúng cách LAB-1 chia |
+| M2 — Nhập hàng | 480 | 434,5 | −10 % | Khớp sát. Nhập hàng ở backlog chỉ còn phần mở phiếu và ghi kiểm; tạo lô đã chuyển sang M3 theo đúng cách LAB-1 chia |
 | M3 — Tồn kho và Kho | 910 | 811,5 | −11 % | Khớp sát, dù backlog có tới 10 màn mức B — bù lại không có mục lược đồ lớn nào |
-| M4 — Đơn và Phân bổ | 970 | 1 060,5 | +9 % | Khớp sát. Phần thuật toán phân bổ 6 bước nằm ở `BL-M4-180`, `BL-M4-181`, cùng bậc với LAB-1 |
-| M5 — Vận tải và Giao hàng · `M5` + `DRV` ↔ M5 | 1 393 | 1 732,5 | +24 % | Cao hơn vì backlog tách `DRV` ra thành hạng mục riêng theo yêu cầu đề, và 15 mục ba-lớp của màn mức A đội giờ lên |
-| M6 — Nhiệt độ và HACCP | 743 | 793,0 | +7 % | Khớp sát |
-| M7 — Truy xuất và Thu hồi | 385 | 646,0 | +68 % | Cao hơn rõ: 6 mục ba-lớp cho hai màn mức A `S1-33`, `S1-34`. LAB-1 ước thu hồi là một feature gọn, backlog mổ ra thành BE · FE · test nên lộ thêm việc |
-| M8 — Báo cáo | 314 | 230,5 | −26 % | Thấp hơn: backlog mới có 3 màn báo cáo, hai câu hỏi phạm vi xuất dữ liệu còn treo nên **chưa break hết** |
-| M9 — Nền tảng và Bảo mật · `M9` ↔ M9 trừ `F0-00` | 911 | 807,0 | −11 % | Khớp sát sau khi trừ `F0-00` ra khỏi M9 của LAB-1 — nếu không trừ thì lệch tới −45 %, và đó là lỗi so sánh chứ không phải chênh thật |
-| M10 — Chuyển đổi dữ liệu | 298 | 153,5 | −49 % | **Chênh lớn nhất và là chỗ backlog thiếu.** LAB-1 ước 298 giờ cho bảng điều khiển migration (`F1-20`) cộng thực thi + ghi lineage (`F4-02`); backlog mới có 2 màn và 1 lược đồ, chưa có mục nào cho script chuyển đổi, đối soát và chạy thử. Xem §5.1 |
-| Nền tảng và môi trường · `SETUP` + `PLAT` ↔ `F0-00` | 568 | 435,0 | −23 % | **Dòng kém chắc nhất bảng.** `F0-00` gồm event store, version hoá rule, RBAC, API scaffolding, hạ tầng PWA; backlog có phần scaffolding và môi trường (`SETUP`) cùng quy ước dùng chung (`PLAT`) nhưng **chưa có mục cho event store append-only và version hoá rule**. Một phần `SETUP` lại thuộc sheet hạ tầng, ngoài 83,73 MM — xem §5.2 |
-| **Tổng** | **7 542** | **7 960,0** | **+6 %** | Chênh +6 % **không phải phát hiện**: hệ số được chia ra từ 1.179 điểm của lát trùng (§3.2), còn bảng này cộng cả `SETUP` (390 giờ) và 5 mục làm rõ (32,5 giờ) vào vế LAB-5 |
+| M4 — Đơn và Phân bổ | 970 | 1 073,5 | +11 % | Khớp sát. Phần thuật toán phân bổ 6 bước nằm ở `BL-M4-180`, `BL-M4-181`, cùng bậc với LAB-1 |
+| M5 — Vận tải và Giao hàng · `M5` + `DRV` ↔ M5 | 1 393 | 1 739,0 | +25 % | Cao hơn vì backlog tách `DRV` ra thành hạng mục riêng theo yêu cầu đề, và 15 mục ba-lớp của màn mức A đội giờ lên |
+| M6 — Nhiệt độ và HACCP | 743 | 799,5 | +8 % | Khớp sát |
+| M7 — Truy xuất và Thu hồi | 385 | 652,5 | +69 % | Cao hơn rõ: 6 mục ba-lớp cho hai màn mức A `S1-33`, `S1-34`. LAB-1 ước thu hồi là một feature gọn, backlog mổ ra thành BE · FE · test nên lộ thêm việc |
+| M8 — Báo cáo | 314 | 237,0 | −24 % | Thấp hơn: backlog mới có 3 màn báo cáo, hai câu hỏi phạm vi xuất dữ liệu còn treo nên **chưa break hết** |
+| M9 — Nền tảng và Bảo mật · `M9` ↔ M9 trừ `F0-00` | 911 | 858,0 | −6 % | Khớp sát sau khi trừ `F0-00` ra khỏi M9 của LAB-1 — nếu không trừ thì lệch tới −45 %, và đó là lỗi so sánh chứ không phải chênh thật |
+| M10 — Chuyển đổi dữ liệu | 298 | 313,5 | +5 % | **Chênh lớn nhất và là chỗ backlog thiếu.** LAB-1 ước 298 giờ cho bảng điều khiển migration (`F1-20`) cộng thực thi + ghi lineage (`F4-02`); backlog mới có 2 màn và 1 lược đồ, chưa có mục nào cho script chuyển đổi, đối soát và chạy thử. Xem §5.1 |
+| Nền tảng và môi trường · `SETUP` + `PLAT` ↔ `F0-00` | 568 | 454,0 | −20 % | **Dòng kém chắc nhất bảng.** `F0-00` gồm event store, version hoá rule, RBAC, API scaffolding, hạ tầng PWA; backlog có phần scaffolding và môi trường (`SETUP`) cùng quy ước dùng chung (`PLAT`) nhưng **đã nhận** event store chỉ-thêm và version hoá luật ở `BL-PLAT-002` (`business_event`, `policy_version`); phần còn lệch là RBAC — `F0-00` tính vào đây, backlog để trong `M9`. Một phần `SETUP` lại thuộc sheet hạ tầng, ngoài 83,73 MM — xem §5.2 |
+| **Tổng** | **7 542** | **8 235,5** | **+9 %** | Chênh +6 % **không phải phát hiện**: hệ số được chia ra từ 1.179 điểm của lát trùng (§3.2), còn bảng này cộng cả `SETUP` (390 giờ) và 5 mục làm rõ (32,5 giờ) vào vế LAB-5 |
 
 ### 5.1 Chênh −49 % ở M10 là chỗ backlog thiếu, không phải chỗ LAB-1 ước thừa
 
@@ -234,12 +234,21 @@ chồng.
 ứng. Chia `SETUP` theo từng việc cho đúng `F0-00` thì cần biết `F0-00` gồm những gì ở mức
 công việc, mà nguồn **không nói**. Nên trình cả hai:
 
-| Kịch bản | Mẫu số | Hệ số | Tổng giờ mục lá | Khi nào đúng |
-|---|---:|---:|---:|---|
-| **A — `SETUP` ngoài lát neo** | 1 179 điểm | **6,4** | 7 960,0 | Khi `F0-00` chỉ gồm mã nền tảng, còn dựng môi trường nằm ở sheet hạ tầng |
-| **B — `SETUP` trong lát neo** | 1 240 điểm | **6,1** | 7 594,5 | Khi `F0-00` đã bao gồm dựng môi trường chạy thử và đường chạy kiểm |
+| Kịch bản | Mẫu số lúc chốt | Hệ số | Khi nào đúng |
+|---|---:|---:|---|
+| **A — `SETUP` ngoài lát neo** | 1 179 điểm | **6,4** | Khi `F0-00` chỉ gồm mã nền tảng, còn dựng môi trường nằm ở sheet hạ tầng |
+| **B — `SETUP` trong lát neo** | 1 240 điểm | **6,1** | Khi `F0-00` đã bao gồm dựng môi trường chạy thử và đường chạy kiểm |
 
 Chênh giữa hai kịch bản là **4,6 %** ở mức tổng; **thứ tự nặng nhẹ giữa các epic không đổi**.
+
+**Hệ số chốt ở G5a và không chia lại sau khi backlog lớn thêm.** Sau G5a, vòng soát chéo trước
+khi nộp làm backlog thêm 11 mục (6 câu hỏi khách cho mâu thuẫn, 1 mục sửa thiết kế, 4 mục dựng
+còn thiếu), nên mẫu số nay là 1 212 điểm. Chia lại bằng đúng phép cũ sẽ ra **6,2 giờ/điểm**
+thay vì 6,4 — lệch 3 %, nằm trong dải ±5 % đã khai ở §5.2.
+
+Tôi **giữ 6,4**, vì ba lẽ: đó là con số người duyệt đã chốt ở G5a; bảng công việc đang mang nó;
+và chia lại mỗi lần backlog đổi thì hệ số không còn là một quy ước mà thành một biến trôi theo
+phạm vi. Chỗ này ghi ra để người đọc tự tính lại được, không giấu.
 
 **Bảng công việc đang mang kịch bản A (6,4).** Chọn A vì sheet hạ tầng của LAB-1 có cột
 DEVELOPMENT riêng 3,5 MM cho việc dựng môi trường — tức LAB-1 **đã** tính việc đó ở chỗ khác.

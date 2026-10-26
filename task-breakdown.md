@@ -86,7 +86,7 @@ Sub-issue FE/BE **không** chép lại bảng ô của màn — chúng trỏ san
 | `BL-DRV-000` (#4) | Ràng buộc giờ lái 2024 | 2 | 0 | — |
 | `BL-PLAT-000` (#14) | Quy ước dùng chung | 2 | 0 | — |
 | `BL-SETUP-000` (#15) | Nền tảng dự án và dữ liệu mẫu | 7 | 0 | — |
-**Tổng: 201 mục — 13 epic · 140 issue · 48 sub-issue.** Khối số trong mỗi epic: `000` epic · `001–019` thay đổi từ PREMISE và issue làm rõ · `010–019` việc nền (epic `SETUP`) · `020–039` function nền · `050–149` màn · `150–179` nhóm API · `180–199` Technical Design và Database Design · `200–299` sub-issue. Mục nhóm API và mục lược đồ **chia phần theo ngân sách độ dài** vì body một issue GitHub tối đa 65 536 ký tự.
+**Tổng: 212 mục — 13 epic · 151 issue · 48 sub-issue.** Khối số trong mỗi epic: `000` epic · `001–019` thay đổi từ PREMISE và issue làm rõ · `010–019` việc nền (epic `SETUP`) · `020–039` function nền · `050–149` màn · `150–179` nhóm API · `180–199` Technical Design và Database Design · `200–299` sub-issue. Mục nhóm API và mục lược đồ **chia phần theo ngân sách độ dài** vì body một issue GitHub tối đa 65 536 ký tự.
 
 ## 2. Spec → issue
 
@@ -169,6 +169,8 @@ không phải chỗ spec thừa.
 | Technical Design dùng chung — N4-13 | `M1` | [#30](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/30) `BL-M1-180` | — |
 | lược đồ cơ sở dữ liệu của module — M1_DB | `M1` | [#31](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/31) `BL-M1-181` | — |
 | lược đồ cơ sở dữ liệu của module — M1_DB | `M1` | [#32](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/32) `BL-M1-182` | — |
+| chức năng nền `N4-*` — Script chuyển đổi dữ liệu từ hệ cũ | `M10` | [#202](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/202) `BL-M10-020` | — |
+| chức năng nền `N4-*` — Đối soát sau chuyển đổi và lần chạy thử trên dữ liệu thật | `M10` | [#203](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/203) `BL-M10-021` | — |
 | lược đồ cơ sở dữ liệu của module — M10_DB | `M10` | [#35](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/35) `BL-M10-180` | — |
 | nhóm API có spec riêng của module — M2 | `M2` | [#41](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/41) `BL-M2-150` | — |
 | lược đồ cơ sở dữ liệu của module — M2_DB | `M2` | [#42](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/42) `BL-M2-180` | — |
@@ -236,10 +238,6 @@ không có dữ liệu riêng thì thành nhãn.**
 | `rb-ngoai-tuyen` — hàng đợi chứng cứ POD tối đa 8 giờ | **13 mục** mang nhãn `rb-ngoai-tuyen` — ví dụ [#76](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/76) `BL-M5-001` · [#87](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/87) `BL-M5-058` · `BL-M5-059` … | Chỉ APP-03 được phép ngoại tuyến; RFP **cấm** giao dịch kho ngoại tuyến. Nhãn giữ ranh giới đó nhìn thấy được. |
 | `rb-cam-dao-ngay` — cấm đảo ngày giao | **11 mục** mang nhãn `rb-cam-dao-ngay` — ví dụ `BL-M4-051` · [#69](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/69) `BL-M4-150` · [#70](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/70) `BL-M4-151` … | Một trong bốn lỗi 重大エラー. So với **lịch sử giao hàng**, không so với hôm nay — nhãn để test hồi quy bắt đúng tập. |
 
-**Vì sao không gộp hết thành nhãn.** Giới hạn giờ lái đổi theo bản quy định; khi bản 2024 được
-thay thì phải sửa một chỗ, chạy lại một tập test, và báo cho khách một epic. Tám ràng buộc còn
-lại không có mốc thời gian riêng như vậy.
-
 ## 4. Chỗ hở — xử lý thế nào
 
 Nguồn: báo cáo của 11 lô viết mô tả (mỗi lô bắt buộc liệt kê giá trị đã đoán, chỗ spec nói hai kiểu, trường không tra được nguồn) cộng phần soát của session chính. Phân loại theo `LAB-5 Planning.md` §3 bước 8.
@@ -283,8 +281,8 @@ Các lô báo về hơn 50 cặp. Những cặp chạm nhiều issue nhất:
 | `S1-33_SPEC.md` ↔ `N1-62_TECH.md`, `API-M7-005_API.md` | số bò sai: 400 `M_0014` không sự kiện, hay 422 `M_0701` kèm `trace_seed_rejected` | `BL-M7-052` (#114), `150` |
 | `S2-07` C-9 ↔ `API-M4-016`, `S2-08`, `S2-09` | cờ vô hiệu suy từ có mã deviation hay không, hay đọc `invalidated_reason_code` | `BL-M4-053` (#64) |
 | `M5_DB` Q5 ↔ `S3-03`, `API-M5-026` | hàng bị từ chối ghi vào dòng giao, hay `REFUSED` vẫn tính là hoàn tất giao | `BL-M5-003` (#77), `BL-M5-150` (#92) |
-| `M9_DB.md:34` ↔ `:46`, `:486` | lịch sử sửa đổi và ma trận quyền nói **11 vai trò**; danh sách bảng và câu hỏi mở Q1 nói **8 vai trò (RFP p.07–08)** | `BL-M9-180` (#145) |
-| Bảy API của M4 (`-001`, `-003`, `-005`, `-007`, `-009`, `-010`, `-011`) | dòng 400 ghi "hoặc thiếu `If-Match`" trong khi **không API nào nhận `If-Match`** — chép nhầm từ mẫu | `BL-M4-150` (#69) |
+| ~~`M9_DB.md:34` ↔ `:46`, `:486`~~ **Không phải mâu thuẫn — tôi đọc sót** | Tôi ghi "lịch sử sửa đổi nói 11 vai, câu hỏi mở Q1 nói 8 vai". Đọc lại cả dòng: `:46` ghi **"RFP p.07–08 (8 chức danh) + 3 vai trò hỗ trợ — 11 vai trò"** — hai con số là hai thứ khác nhau, không chọi nhau. Và `:486` cột Trạng thái ghi **`answered (B7): 11 vai trò`**, tức câu hỏi đã có câu trả lời từ LAB-4. | **Rút khỏi danh sách.** Không mở câu hỏi khách nào cho cặp này — mở là bịa ra một câu hỏi đã được trả lời |
+| **14 API của M4** (`-001`, `-003`, `-005`, `-007`, `-009`, `-010`, `-011`, `-012`, `-013`, `-014`, `-016`, `-017`, `-020`, `-021`) — *bản trước tôi đếm 7, quét lại toàn thư mục `api-design/` ra 14* | dòng 400 ghi "hoặc thiếu `If-Match`" trong khi **không API nào nhận `If-Match`** — chép nhầm từ mẫu | `BL-M4-150` (#69) |
 | `API-M5-026_API.md:87` | `"signature\|photo"` có dấu `\|` **chưa thoát**, làm dòng bảng thừa hai ô | `BL-M5-151` (#93) (bản chép đã gộp và khai báo) |
 
 Chi tiết từng cặp nằm ở mục `## Tham chiếu` của chính file mô tả. **Không file nào tự chọn một cách hiểu.**
@@ -380,6 +378,21 @@ backlog mới có 3 mục — hai màn mức B (`S1-40`, `S1-41`) và một mụ
 **Không có mục nào** cho: script chuyển đổi từ hệ cũ, bước đối soát sau khi chạy, và lần
 chạy thử trên dữ liệu thật. Đây là chỗ hở của chính bước break task, không phải chỗ LAB-1
 ước thừa.
+
+**Đã thêm mục ở vòng này.** `BL-M10-020` (script chuyển đổi, 15 SWP) và `BL-M10-021` (đối soát
+và chạy thử, 10 SWP) nay nhận đúng phần việc còn thiếu; `BL-M10-021` phục vụ hai lần diễn tập
+migration ở tuần 8 và tuần 15 cùng bằng chứng cho cổng `ACC-MIG-01`.
+
+**Hai chỗ vẫn chưa có mục nhận, phát hiện khi viết hai mục trên — để mở:**
+
+| Chỗ hở | Vì sao chưa thành mục |
+|---|---|
+| `API-M10-011` — job so sánh hệ cũ và hệ mới trong tuần vận hành song song (`N4-28`) | Phạm vi tuần vận hành song song chưa chốt; nhét vào `BL-M10-021` sẽ trộn hai việc khác mốc thời gian |
+| Lần tải cuối lúc cutover | Thuộc kế hoạch chuyển đổi vận hành, không thuộc phần dựng — cần người nghiệp vụ xác nhận trước khi chia |
+
+Và một chỗ hở của chính thiết kế, lộ ra khi viết `BL-M10-021`: `RFP p.64` đòi đối soát theo
+**giá trị** tồn kho, nhưng Database Design **không có cột nào** là đơn giá hay giá trị. Mục
+hiện chỉ đối soát được số lượng, và nói rõ điều đó.
 
 **Không vá bằng cách nâng giờ của ba mục đang có.** Việc chưa được chia thì chưa có mục để
 gắn giờ; nâng số chỉ làm con số đẹp lên trong khi backlog vẫn thiếu việc. Phải thêm mục ở

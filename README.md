@@ -16,11 +16,11 @@ Backlog chia từ **bộ thiết kế chi tiết LAB-4 nộp ngày 2026-10-15**,
 | Số | Đếm cái gì |
 |---:|---|
 | **13** | epic trên Project |
-| **140** | issue (không tính epic, không tính sub-issue) |
+| **151** | issue (không tính epic, không tính sub-issue) |
 | **48** | sub-issue của màn mức A (ba lớp BE · FE · test) |
-| **172** | mục lá được chấm điểm trực tiếp = 201 − 29 mục cha. Mục cha gồm 13 epic và 16 issue của màn mức A (đã có sub-issue nên không chấm trực tiếp) |
-| **1245** | SWP cộng trên mục lá; mục cha lấy tổng của con nên **không cộng vào đây** |
-| **7 960,0** | giờ ước lượng cộng trên mục lá = 56,9 tháng công (140 giờ/tháng) |
+| **183** | mục lá được chấm điểm trực tiếp = 201 − 29 mục cha. Mục cha gồm 13 epic và 16 issue của màn mức A (đã có sub-issue nên không chấm trực tiếp) |
+| **1288** | SWP cộng trên mục lá; mục cha lấy tổng của con nên **không cộng vào đây** |
+| **8 235,5** | giờ ước lượng cộng trên mục lá = 58,8 tháng công (140 giờ/tháng) |
 
 **Sprint giả lập đã chạy:** `Inc 0 — nền tảng` (7 mục, xong) và `Sprint 1`
 (10 mục · 5 xong · 2 đang làm · 3 trượt sang sprint sau). Báo cáo ở
@@ -67,7 +67,7 @@ thư mục làm việc của học viên, người ngoài không mở được:
 | `work/test-summary.md` | Sổ vòng kiểm `R1`…`R19` |
 | `work/checks/` | Bộ kiểm máy và kết quả từng vòng |
 | `work/prompts/` | Prompt nguyên văn và output gốc của từng lượt giao AI |
-| `work/backlog.csv`, `work/issues/`, `work/issue-comments/` | Nguồn sinh ra 201 mục trên bảng |
+| `work/backlog.csv`, `work/issues/`, `work/issue-comments/` | Nguồn sinh ra 212 mục trên bảng |
 | `work/swp/`, `work/sprint/` | Dữ liệu chấm điểm, quy giờ và kịch bản sprint |
 | `work/push-*.py`, `work/reset-board.py` | Script ghi lên bảng công việc và script đưa về ban đầu |
 | `LAB-5 Planning.md` | Kế hoạch các bước `B0`…`B9` và gate `G0`…`G7` |
@@ -79,19 +79,19 @@ thư mục làm việc của học viên, người ngoài không mở được:
 | Spec nguồn (LAB-4) hoặc dòng PREMISE | Epic trên Project | Mục lá | SWP | Ghi chú |
 |---|---|---:|---:|---|
 | `m1-master-data/` · `M1_DB.md` · `api-list.md` (API-M1-*) | [#5](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/5) — `BL-M1-000` Dữ liệu chủ | 19 | 135 | Dữ liệu chủ: khách, SKU, vị trí kho, phương tiện, tài xế |
-| `m2-inbound/` · `M2_DB.md` | [#1](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/1) — `BL-M2-000` Nhập hàng | 10 | 67 | Nhập hàng và ghi kiểm; tạo lô nằm ở M3 |
+| `m2-inbound/` · `M2_DB.md` | [#1](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/1) — `BL-M2-000` Nhập hàng | 11 | 68 | Nhập hàng và ghi kiểm; tạo lô nằm ở M3 |
 | `m3-inventory/` · `M3_DB.md` | [#7](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/7) — `BL-M3-000` Tồn kho | 20 | 127 | Tồn kho, lô, cất hàng, kiểm kê, cách ly |
-| `m4-outbound/` · `M4_DB.md` | [#8](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/8) — `BL-M4-000` Xuất hàng | 21 | 166 | Đơn hàng, phân bổ 6 bước, lấy hàng, xếp hàng |
-| `m5-transport-delivery/` · `M5_DB.md` | [#9](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/9) — `BL-M5-000` Vận tải · giao hàng | 32 | 263 | Lập tuyến, giao hàng, chứng cứ POD ngoại tuyến |
-| `m6-temperature-haccp/` · `M6_DB.md` | [#10](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/10) — `BL-M6-000` Nhiệt độ · HACCP | 18 | 124 | **Nhãn `rb-haccp`** — nguồn pháp lý ngoài, xem `task-breakdown.md` |
-| `m7-traceability-recall/` · `M7_DB.md` | [#11](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/11) — `BL-M7-000` Truy xuất · thu hồi | 12 | 101 | Truy xuất ngược xuôi, thu hồi |
-| `m8-reporting-audit/` · `M8_DB.md` | [#12](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/12) — `BL-M8-000` Báo cáo · kiểm toán | 6 | 36 | Báo cáo, xuất dữ liệu, nhật ký kiểm toán |
-| `m9-platform-security/` · `M9_DB.md` | [#13](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/13) — `BL-M9-000` Nền tảng · bảo mật | 20 | 126 | Xác thực, phân quyền, 11 chức năng nền `N4-*` |
-| `m10-data-migration/` · `M10_DB.md` | [#6](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/6) — `BL-M10-000` Chuyển dữ liệu | 3 | 24 | **Chia còn thiếu mục** — `task-breakdown.md` §4.11 |
-| `_common/api-conventions.md` · `COMMON_DB` | [#14](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/14) — `BL-PLAT-000` Quy ước dùng chung | 2 | 7 | Quy ước dùng chung mọi module |
+| `m4-outbound/` · `M4_DB.md` | [#8](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/8) — `BL-M4-000` Xuất hàng | 23 | 168 | Đơn hàng, phân bổ 6 bước, lấy hàng, xếp hàng |
+| `m5-transport-delivery/` · `M5_DB.md` | [#9](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/9) — `BL-M5-000` Vận tải · giao hàng | 33 | 264 | Lập tuyến, giao hàng, chứng cứ POD ngoại tuyến |
+| `m6-temperature-haccp/` · `M6_DB.md` | [#10](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/10) — `BL-M6-000` Nhiệt độ · HACCP | 19 | 125 | **Nhãn `rb-haccp`** — nguồn pháp lý ngoài, xem `task-breakdown.md` |
+| `m7-traceability-recall/` · `M7_DB.md` | [#11](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/11) — `BL-M7-000` Truy xuất · thu hồi | 13 | 102 | Truy xuất ngược xuôi, thu hồi |
+| `m8-reporting-audit/` · `M8_DB.md` | [#12](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/12) — `BL-M8-000` Báo cáo · kiểm toán | 7 | 37 | Báo cáo, xuất dữ liệu, nhật ký kiểm toán |
+| `m9-platform-security/` · `M9_DB.md` | [#13](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/13) — `BL-M9-000` Nền tảng · bảo mật | 21 | 134 | Xác thực, phân quyền, 11 chức năng nền `N4-*` |
+| `m10-data-migration/` · `M10_DB.md` | [#6](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/6) — `BL-M10-000` Chuyển dữ liệu | 5 | 49 | **Chia còn thiếu mục** — `task-breakdown.md` §4.11 |
+| `_common/api-conventions.md` · `COMMON_DB` | [#14](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/14) — `BL-PLAT-000` Quy ước dùng chung | 3 | 10 | Quy ước dùng chung mọi module |
 | `PREMISE.md` §1.6 · `m5-transport-delivery/` (`N4-18`) | [#4](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/4) — `BL-DRV-000` Ràng buộc giờ lái 2024 | 2 | 8 | **Ràng buộc giờ lái xe tải từ 2024** — hạng mục nghiệp vụ đặc thù, tách riêng theo yêu cầu đề |
 | `PREMISE.md` §2 (giả định) · `ARCHITECTURE_DESIGN.md` | [#15](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/15) — `BL-SETUP-000` Nền tảng dự án và dữ liệu mẫu | 7 | 61 | Dựng môi trường, công cụ, dữ liệu mẫu — **không có trong thiết kế LAB-4**, sinh ra khi chia việc |
-| | **Tổng** | **172** | **1245** | |
+| | **Tổng** | **183** | **1288** | |
 
 ## 5. Thao tác không hoàn tác được, và cách đưa về ban đầu
 
@@ -104,7 +104,7 @@ thư mục làm việc của học viên, người ngoài không mở được:
 
 ### Đưa dữ liệu về ban đầu
 
-**Trạng thái ban đầu** của bảng công việc là: 201 issue đều `open`, không mục nào có `Status`,
+**Trạng thái ban đầu** của bảng công việc là: 212 issue đều `open`, không mục nào có `Status`,
 `Iteration`, `Point` hay `Est. hours`. Script `work/reset-board.py` (nội bộ) đưa về đúng trạng
 thái đó: mở lại mọi issue đã đóng và xoá giá trị bốn trường trên. Nó **không xoá** issue, không
 gỡ mục khỏi Project, không đụng nội dung.
@@ -153,7 +153,7 @@ Giờ = SWP × 6,4, làm tròn nửa giờ gần nhất — `estimate.md` §3.
 
 | Thật | Giả lập |
 |---|---|
-| 201 issue và nội dung của chúng · quan hệ cha–con · nhãn · `Point` · `Est. hours` · báo cáo chấm điểm | Kết quả Sprint 1: mục nào xong, mục nào trượt, ngày xong từng mục |
+| 212 issue và nội dung của chúng · quan hệ cha–con · nhãn · `Point` · `Est. hours` · báo cáo chấm điểm | Kết quả Sprint 1: mục nào xong, mục nào trượt, ngày xong từng mục |
 | Năm mục mẫu người duyệt kiểm và sửa | Trạng thái `Done` và việc đóng issue — **là một phần của giả lập**, không phải đã code xong |
 | Sức chứa sprint, ngày tháng (lấy từ lịch dự án của LAB-1) | Người phụ trách: trường `Owner (giả định)` là **vai**, không phải người thật |
 
