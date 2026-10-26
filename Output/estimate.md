@@ -110,10 +110,18 @@ tổng LAB-1, nên tổng giờ phần trùng bằng 7.545,6 ≈ 7.541,8 là **t
 Thứ mang thông tin là **phân bố**: module nào trong backlog nặng hơn hay nhẹ hơn LAB-1 — phần
 đó để §5.
 
-**Một phép thử độc lập, không dính vào hệ số.** Epic `SETUP` (390 giờ) không nằm trong 83,73 MM;
-LAB-1 để việc này ở sheet hạ tầng riêng, cột DEVELOPMENT **3,5 MM = 490 giờ** (*sheet tự ghi
-"dữ liệu chỉ mang tính tham khảo"*). 390 so 490 — cùng bậc, lệch 20 %. Đây là chỗ duy nhất hai
-cách ước gặp nhau mà không bị hệ số ép cho gặp.
+**`SETUP` vắt qua hai nguồn — tôi không tự chọn một cách hiểu.** Hai đoạn nguồn cùng có lý:
+`F0-00` trong 83,73 MM nêu đích danh *API scaffolding* và *hạ tầng PWA* (tức khung dự án), còn
+sheet hạ tầng riêng có cột DEVELOPMENT **3,5 MM = 490 giờ** cho việc dựng môi trường (*sheet tự
+ghi "dữ liệu chỉ mang tính tham khảo"*). `SETUP` của backlog có cả hai loại việc.
+
+Tôi **để `SETUP` ngoài mẫu số** khi chia hệ số. Hệ quả đo được: nếu đưa vào, mẫu số thành
+1.240 điểm và hệ số xuống **6,1 giờ/điểm** — tổng thấp hơn 5 %, thứ tự epic không đổi. Đây là
+**điểm còn mở**, không phải điểm đã chốt; nó không đổi kết luận nào ở §5 ngoài dòng "Nền tảng
+và môi trường".
+
+Phép thử ít dính hệ số nhất: `SETUP` 390 giờ so với 490 giờ của cột DEVELOPMENT — cùng bậc,
+lệch 20 %.
 
 **Giả định nằm dưới cả quy ước:** một điểm SWP tốn như nhau ở mọi module và mọi loại việc.
 Thực tế không vậy, và §5 sẽ chỉ ra đúng chỗ nó không vậy.
@@ -163,7 +171,7 @@ phải lọc bỏ tầng cha trước; nếu không sẽ đếm hai lần.
 | `M6` — Nhiệt độ và HACCP | 18 | 124 | 793,0 | Nhiệt độ · HACCP; 5 mục lược đồ — nhóm bảng đo và cảnh báo rộng |
 | `M7` — Truy xuất và Thu hồi | 12 | 101 | 646,0 | Truy xuất và thu hồi; 6 mục là ba lớp của hai màn mức A |
 | `M2` — Nhập hàng | 10 | 67 | 428,0 | Nhập hàng; phần lớn nằm ở M3 vì tạo lô thuộc tồn kho |
-| `SETUP` — Dựng môi trường | 7 | 61 | 390,0 | **Không có dòng tương ứng trong 83,73 MM của LAB-1** — LAB-1 để việc này ở sheet hạ tầng |
+| `SETUP` — Dựng môi trường | 7 | 61 | 390,0 | Nguồn đối chiếu **còn mở**: một phần ứng với `F0-00` (API scaffolding, hạ tầng PWA) nằm trong 83,73 MM, một phần ứng với sheet hạ tầng nằm ngoài — xem §5.2 |
 | `M8` — Báo cáo | 6 | 36 | 230,5 | Báo cáo; 2 mục là câu hỏi còn treo về phạm vi xuất dữ liệu |
 | `M10` — Chuyển đổi dữ liệu | 3 | 24 | 153,5 | Chuyển đổi dữ liệu — **mỏng hơn LAB-1 rõ rệt**, xem §5 |
 | `DRV` — Ràng buộc giờ tài xế | 2 | 8 | 51,0 | Ràng buộc giờ lái xe 2024 — tách riêng theo yêu cầu đề (hạng mục nghiệp vụ đặc thù) |
@@ -195,8 +203,24 @@ Hai chỗ phải ghép lại trước khi so, nếu không con số nói sai:
 | M8 — Báo cáo | 314 | 230,5 | −26 % | Thấp hơn: backlog mới có 3 màn báo cáo, hai câu hỏi phạm vi xuất dữ liệu còn treo nên **chưa break hết** |
 | M9 — Nền tảng và Bảo mật · `M9` ↔ M9 trừ `F0-00` | 911 | 807,0 | −11 % | Khớp sát sau khi trừ `F0-00` ra khỏi M9 của LAB-1 — nếu không trừ thì lệch tới −42 %, và đó là lỗi so sánh chứ không phải chênh thật |
 | M10 — Chuyển đổi dữ liệu | 298 | 153,5 | −49 % | **Chênh lớn nhất và là chỗ backlog thiếu.** LAB-1 ước 298 giờ cho bảng điều khiển migration (`F1-20`) cộng thực thi + ghi lineage (`F4-02`); backlog mới có 2 màn và 1 lược đồ, chưa có mục nào cho script chuyển đổi, đối soát và chạy thử. Xem §5.1 |
-| Nền tảng và môi trường · `SETUP` + `PLAT` ↔ `F0-00` | 568 | 435,0 | −23 % | `SETUP` + `PLAT` so với `F0-00` của LAB-1. Thấp hơn 23 %: backlog chưa có mục cho event store append-only và version hoá rule — hai thứ `F0-00` nêu đích danh |
-| **Tổng** | **7 542** | **7 960,0** | **+6 %** | Tổng gần bằng nhau là **tất yếu** — hệ số 6,4 được chia ra từ chính tổng này (§3.3) |
+| Nền tảng và môi trường · `SETUP` + `PLAT` ↔ `F0-00` | 568 | 435,0 | −23 % | **Dòng kém chắc nhất bảng.** `F0-00` gồm event store, version hoá rule, RBAC, API scaffolding, hạ tầng PWA; backlog có phần scaffolding và môi trường (`SETUP`) cùng quy ước dùng chung (`PLAT`) nhưng **chưa có mục cho event store append-only và version hoá rule**. Một phần `SETUP` lại thuộc sheet hạ tầng, ngoài 83,73 MM — xem §5.2 |
+| **Tổng** | **7 542** | **7 960,0** | **+6 %** | Chênh +6 % **không phải phát hiện**: hệ số được chia ra từ 1.179 điểm của lát trùng (§3.2), còn bảng này cộng cả `SETUP` (390 giờ) và 5 mục làm rõ (32,5 giờ) vào vế LAB-5 |
+
+### 5.2 Một chỗ hai nguồn cùng có lý — để mở, không tự chọn
+
+Epic `SETUP` ứng với **cả hai**: `F0-00` trong 83,73 MM nêu đích danh *API scaffolding* và
+*hạ tầng PWA*, còn sheet hạ tầng riêng có cột DEVELOPMENT 3,5 MM = 490 giờ cho việc dựng
+môi trường. Hai đoạn này không mâu thuẫn nhau — chúng chồng lấn, và `SETUP` nằm đúng chỗ
+chồng.
+
+Tôi để `SETUP` ngoài mẫu số khi chia hệ số (§3.2). **Hệ quả đo được**: đưa vào thì hệ số
+xuống 6,1 giờ/điểm, tổng thấp hơn 5 %, thứ tự epic không đổi. Dòng *Nền tảng và môi trường*
+ở bảng trên là dòng duy nhất bị ảnh hưởng, và nó cũng là dòng kém chắc nhất bảng.
+
+Để mở chứ không chốt: cần người nghiệp vụ nói `F0-00` có bao gồm dựng môi trường chạy thử
+và đường chạy kiểm tự động hay không. Trước khi có câu trả lời, mọi con số trong mục này
+đọc kèm sai số ±5 % ở mức tổng.
+
 
 ### 5.1 Chênh −49 % ở M10 là chỗ backlog thiếu, không phải chỗ LAB-1 ước thừa
 
