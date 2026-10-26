@@ -219,6 +219,23 @@ Một lượt đọc mù nêu: `stock_balance.qty_on_hand` là **tồn hiện t�
 
 `CQ35` chạm 142 trên 172 mục vì gần như mọi thao tác ghi đều dùng `Idempotency-Key`. Các mục chỉ chặn phần kiểm **mã trạng thái của lần gửi lại**; phần "không tạo bản ghi thứ hai" vẫn làm được.
 
+### 4.11 Chuyển đổi dữ liệu (M10) bị break mỏng — phát hiện ở bước quy giờ
+
+So với ước lượng LAB-1, epic `M10` chỉ bằng **một nửa**: LAB-1 có `F1-20` bảng điều khiển
+migration và đối soát (189 giờ) cộng `F4-02` thực thi migration và ghi lineage (109 giờ);
+backlog mới có 3 mục — hai màn mức B (`S1-40`, `S1-41`) và một mục lược đồ `M10_DB`.
+
+**Không có mục nào** cho: script chuyển đổi từ hệ cũ, bước đối soát sau khi chạy, và lần
+chạy thử trên dữ liệu thật. Đây là chỗ hở của chính bước break task, không phải chỗ LAB-1
+ước thừa.
+
+**Không vá bằng cách nâng giờ của ba mục đang có.** Việc chưa được chia thì chưa có mục để
+gắn giờ; nâng số chỉ làm con số đẹp lên trong khi backlog vẫn thiếu việc. Phải thêm mục ở
+vòng break sau — ghi thành việc phải làm, không để tự nhớ.
+
+*Phát hiện này đến từ phép so §5 của `estimate.md`, tức sau khi backlog đã lên board. Nó cho
+thấy phép so với ước lượng cũ là một bộ kiểm thật cho bước break, không chỉ là một mục phải nộp.*
+
 ---
 
 ## 5. Bốn quyết định kỹ thuật — trình G2

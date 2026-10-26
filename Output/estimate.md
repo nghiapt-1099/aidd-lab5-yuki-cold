@@ -66,12 +66,150 @@ ba luật lan ở trên chỉ chạm 25 mục, 176 mục còn lại chưa ai soi
 
 ## 3. Cách quy ra giờ
 
-*Chưa làm — bước B6.*
+> **Bản nháp — chờ duyệt ở G5a.** Chưa ghi giờ lên bảng công việc.
+
+### 3.1 Chọn quy ước đổi điểm ra giờ, không ước trực tiếp từng mục
+
+Đề cho hai đường: ước giờ thẳng từ nội dung mục, hoặc đặt quy ước đổi SWP ra giờ. Tôi chọn
+**quy ước**, vì ba lẽ:
+
+1. **Ước trực tiếp 201 mục là lần đoán thứ hai, không tra ngược được về gì.** SWP đã có đường
+   tra ngược — về số đếm trong mục, rồi về bảng nguồn trường và DoD. Đoán lại giờ từ đầu là
+   vứt đường đó đi và thay bằng cảm giác lúc đọc.
+2. **Phải tất định.** Cùng một mục, chạy lại phải ra cùng một số. Quy ước làm được; ước trực
+   tiếp thì hai lần đọc cách nhau một ngày đã ra hai số.
+3. **Hai lần nhân độ khó là tính hai lần.** Ma trận SWP đã gộp độ khó vào điểm rồi. Nếu lại
+   nhân thêm hệ số theo độ khó khi đổi ra giờ thì một mục khó bị tính độ khó hai lượt.
+
+### 3.2 Hệ số: 6,4 giờ cho một điểm, neo vào chính baseline LAB-1
+
+Hệ số **không bịa**. Nó là thương của hai con số có nguồn:
+
+| Vế | Giá trị | Nguồn |
+|---|---:|---|
+| Một tháng công bằng bao nhiêu giờ | 20 ngày × 7 giờ = **140 giờ** | `effort-estimation/06-appendix.md` — *Working days in a month 20* · *Working hours in a day 7* [FACT] |
+| Phần LAB-1 trùng với backlog | BE 33,06 + FE 20,81 = 53,87 MM = **7.541,8 giờ** | `wbs/00-wbs-by-feature.csv`, cộng 44 dòng feature [FACT] |
+| Phần SWP trùng tương ứng | 1.245 − 61 (epic `SETUP`) − 5 (mục làm rõ) = **1.179 điểm** | `work/swp/payload-cal.json` |
+| **Hệ số** | 7.541,8 ÷ 1.179 = 6,396 → **6,4 giờ/điểm** | |
+
+**Vì sao chỉ lấy BE + FE làm lát neo.** Backlog này là việc *dựng*: lớp BE, lớp FE, lớp test
+của màn, lược đồ bảng, nhóm API. Ba khoản còn lại của LAB-1 **không có mục tương ứng trong
+backlog** nên không được kéo vào mẫu số: Design UI/UX 4,10 MM, QA độc lập 25,96 MM (LAB-1 ước
+theo 2.363 test case, không theo feature — `wbs.md` tự ghi rõ đó là số *phân bổ*), và hệ số
+quản lý 0,2 nằm ngoài BE/FE. Gộp chúng vào sẽ thổi hệ số lên ~9,9 giờ/điểm cho một backlog
+không chứa việc đó.
+
+**Làm tròn nửa giờ, nửa lên.** 1 điểm × 6,4 = 6,4 giờ; ghi "6,4" là tự nhận độ chính xác
+12 phút mà phép đo không có. Lưới nửa giờ nói đúng mức chắc chắn thật. Luật nằm ở
+`work/swp/hours-rule.py`, một hàm thuần không trạng thái — chạy lại ra đúng số cũ.
+
+### 3.3 Chỗ quy ước này tự nó không chứng minh được
+
+**Tổng khớp LAB-1 là do tôi đặt cho khớp, không phải phát hiện.** Hệ số được chia ra từ chính
+tổng LAB-1, nên tổng giờ phần trùng bằng 7.545,6 ≈ 7.541,8 là **tất yếu**, không mang thông tin.
+Thứ mang thông tin là **phân bố**: module nào trong backlog nặng hơn hay nhẹ hơn LAB-1 — phần
+đó để §5.
+
+**Một phép thử độc lập, không dính vào hệ số.** Epic `SETUP` (390 giờ) không nằm trong 83,73 MM;
+LAB-1 để việc này ở sheet hạ tầng riêng, cột DEVELOPMENT **3,5 MM = 490 giờ** (*sheet tự ghi
+"dữ liệu chỉ mang tính tham khảo"*). 390 so 490 — cùng bậc, lệch 20 %. Đây là chỗ duy nhất hai
+cách ước gặp nhau mà không bị hệ số ép cho gặp.
+
+**Giả định nằm dưới cả quy ước:** một điểm SWP tốn như nhau ở mọi module và mọi loại việc.
+Thực tế không vậy, và §5 sẽ chỉ ra đúng chỗ nó không vậy.
+
+### 3.4 Áp thử trên epic M1 — Dữ liệu chủ
+
+Chọn M1 vì nó có đủ mọi loại mục của backlog (làm rõ câu hỏi · lược đồ · nhóm API · màn mức B ·
+ba lớp BE/FE/test của màn mức A · Technical Design) và trải từ điểm thấp nhất tới gần cao nhất.
+
+| Mục | SWP | SWP × 6,4 | Giờ ghi lên Project |
+|---|---:|---:|---:|
+| [#31](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/31) `BL-M1-181` — M1_DB — dựng lược đồ nhóm Dữ liệu chủ (phần 1/2) | 16 | 102,4 | **102,5** |
+| [#32](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/32) `BL-M1-182` — M1_DB — dựng lược đồ nhóm Dữ liệu chủ (phần 2/2) | 16 | 102,4 | **102,5** |
+| [#28](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/28) `BL-M1-150` — M1 — dựng 12 API có spec riêng (phần 1/2) | 12 | 76,8 | **77,0** |
+| [#21](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/21) `BL-M1-051` — S1-04 — dựng màn theo spec mức B | 8 | 51,2 | **51,0** |
+| [#25](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/25) `BL-M1-055` — S1-48 — dựng màn theo spec mức B | 8 | 51,2 | **51,0** |
+| [#26](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/26) `BL-M1-056` — S1-49 — dựng màn theo spec mức B | 8 | 51,2 | **51,0** |
+| [#27](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/27) `BL-M1-057` — S1-50 — dựng màn theo spec mức B | 8 | 51,2 | **51,0** |
+| [#29](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/29) `BL-M1-151` — M1 — dựng 3 API có spec riêng (phần 2/2) | 8 | 51,2 | **51,0** |
+| [#30](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/30) `BL-M1-180` — N4-13 — hiện thực Technical Design | 8 | 51,2 | **51,0** |
+| [#155](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/155) `BL-M1-209` — S1-06 — lớp BE | 8 | 51,2 | **51,0** |
+| [#22](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/22) `BL-M1-052` — S1-05 — dựng màn theo spec mức B | 5 | 32,0 | **32,0** |
+| [#158](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/158) `BL-M1-212` — S1-07 — lớp BE | 5 | 32,0 | **32,0** |
+| [#18](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/18) `BL-M1-001` — Thêm cột fefo_access_rank vào bảng location | 4 | 25,6 | **25,5** |
+| [#20](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/20) `BL-M1-050` — S1-03 — dựng màn theo spec mức B | 4 | 25,6 | **25,5** |
+| [#156](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/156) `BL-M1-210` — S1-06 — lớp FE | 4 | 25,6 | **25,5** |
+| [#157](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/157) `BL-M1-211` — S1-06 — lớp test | 4 | 25,6 | **25,5** |
+| [#159](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/159) `BL-M1-213` — S1-07 — lớp FE | 4 | 25,6 | **25,5** |
+| [#160](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/160) `BL-M1-214` — S1-07 — lớp test | 4 | 25,6 | **25,5** |
+| [#19](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/19) `BL-M1-002` — Làm rõ CQ31 — khả năng tiếp cận FEFO xếp hạng theo gì | 1 | 6,4 | **6,5** |
+| **Tổng epic M1** | **135** | 864,0 | **862,5** |
+
 
 ## 4. Tổng theo epic
 
-*Chưa làm — bước B6 (cần số giờ ở §3).*
+Giờ ở đây là của **mục lá** — không cộng mục cha, vì mục cha đã mang giờ của con nó.
+Trường `Est. hours` trên bảng công việc ghi cho **cả hai tầng**, nên mọi phép cộng từ board
+phải lọc bỏ tầng cha trước; nếu không sẽ đếm hai lần.
+
+| Epic | Số issue | Tổng SWP | Tổng giờ | Ghi chú |
+|---|---:|---:|---:|---|
+| `M5` — Vận tải và Giao hàng | 32 | 263 | 1 681,5 | Lõi nghiệp vụ: lập tuyến, giao hàng, chứng cứ ngoại tuyến. Epic nặng nhất, 15 mục là ba lớp của màn mức A |
+| `M4` — Đơn và Phân bổ | 21 | 166 | 1 060,5 | Phân bổ 6 bước; 5 mục lược đồ vì nhóm bảng đơn hàng rộng |
+| `M1` — Dữ liệu chủ | 19 | 135 | 862,5 | Dữ liệu chủ; chứa 2 mục làm rõ câu hỏi còn treo (`CQ31`) |
+| `M3` — Tồn kho và Kho | 20 | 127 | 811,5 | Nhiều màn mức B nhất (10) — tồn kho có nhiều màn tra cứu đơn giản |
+| `M9` — Nền tảng và Bảo mật | 20 | 126 | 807,0 | 11 mục việc nền (xác thực, phân quyền, nhật ký audit, job tích hợp) |
+| `M6` — Nhiệt độ và HACCP | 18 | 124 | 793,0 | Nhiệt độ · HACCP; 5 mục lược đồ — nhóm bảng đo và cảnh báo rộng |
+| `M7` — Truy xuất và Thu hồi | 12 | 101 | 646,0 | Truy xuất và thu hồi; 6 mục là ba lớp của hai màn mức A |
+| `M2` — Nhập hàng | 10 | 67 | 428,0 | Nhập hàng; phần lớn nằm ở M3 vì tạo lô thuộc tồn kho |
+| `SETUP` — Dựng môi trường | 7 | 61 | 390,0 | **Không có dòng tương ứng trong 83,73 MM của LAB-1** — LAB-1 để việc này ở sheet hạ tầng |
+| `M8` — Báo cáo | 6 | 36 | 230,5 | Báo cáo; 2 mục là câu hỏi còn treo về phạm vi xuất dữ liệu |
+| `M10` — Chuyển đổi dữ liệu | 3 | 24 | 153,5 | Chuyển đổi dữ liệu — **mỏng hơn LAB-1 rõ rệt**, xem §5 |
+| `DRV` — Ràng buộc giờ tài xế | 2 | 8 | 51,0 | Ràng buộc giờ lái xe 2024 — tách riêng theo yêu cầu đề (hạng mục nghiệp vụ đặc thù) |
+| `PLAT` — Quy ước dùng chung | 2 | 7 | 45,0 | Quy ước API dùng chung và nhóm bảng COMMON_DB |
+| **Tổng** | **172** | **1245** | **7 960,0** | = 56,9 MM theo đơn vị LAB-1 (140 giờ/MM) |
 
 ## 5. So với ước lượng LAB-1
 
-*Chưa làm — bước B6.*
+Mốc so là **K1 = 83,73 MM** (chốt ở G0), trong đó lát trùng với backlog là BE + FE =
+53,87 MM = 7.541,8 giờ. Ba khoản LAB-1 có mà backlog không có — Design UI/UX, QA độc lập,
+hệ số quản lý — **không đưa vào bảng này**; đưa vào sẽ so một thứ với thứ khác.
+
+Hai chỗ phải ghép lại trước khi so, nếu không con số nói sai:
+
+- **`F0-00` của LAB-1 nằm trong module M9** (nền tảng kiến trúc, 568 giờ), còn backlog tách
+  thành `SETUP` + `PLAT`. So thẳng M9 ↔ M9 sẽ ra −42 % — đó là **lỗi ghép**, không phải chênh thật.
+- **`DRV` tách riêng** theo yêu cầu đề (hạng mục chịu ràng buộc giờ lái xe 2024); ở LAB-1 nó
+  nằm trong M5 (`F1-09`, `F1-30`).
+
+| Phần | LAB-1 (giờ) | LAB-5 (giờ) | Chênh | Vì sao |
+|---|---:|---:|---:|---|
+| M1 — Dữ liệu chủ | 568 | 862,5 | +52 % | Backlog nặng hơn vì **màn mức B là một mục trọn gói BE+FE+test**, còn LAB-1 tách effort theo vai trò và màn tra cứu đơn giản rơi vào đơn giá thấp. 6 màn mức B × 25,5–51 giờ đã là 230 giờ |
+| M2 — Nhập hàng | 480 | 428,0 | −11 % | Khớp sát. Nhập hàng ở backlog chỉ còn phần mở phiếu và ghi kiểm; tạo lô đã chuyển sang M3 theo đúng cách LAB-1 chia |
+| M3 — Tồn kho và Kho | 910 | 811,5 | −11 % | Khớp sát, dù backlog có tới 10 màn mức B — bù lại không có mục lược đồ lớn nào |
+| M4 — Đơn và Phân bổ | 970 | 1 060,5 | +9 % | Khớp sát. Phần thuật toán phân bổ 6 bước nằm ở `BL-M4-180`, `BL-M4-181`, cùng bậc với LAB-1 |
+| M5 — Vận tải và Giao hàng · `M5` + `DRV` ↔ M5 | 1 393 | 1 732,5 | +24 % | Cao hơn vì backlog tách `DRV` ra thành hạng mục riêng theo yêu cầu đề, và 15 mục ba-lớp của màn mức A đội giờ lên |
+| M6 — Nhiệt độ và HACCP | 743 | 793,0 | +7 % | Khớp sát |
+| M7 — Truy xuất và Thu hồi | 385 | 646,0 | +68 % | Cao hơn rõ: 6 mục ba-lớp cho hai màn mức A `S1-33`, `S1-34`. LAB-1 ước thu hồi là một feature gọn, backlog mổ ra thành BE · FE · test nên lộ thêm việc |
+| M8 — Báo cáo | 314 | 230,5 | −26 % | Thấp hơn: backlog mới có 3 màn báo cáo, hai câu hỏi phạm vi xuất dữ liệu còn treo nên **chưa break hết** |
+| M9 — Nền tảng và Bảo mật · `M9` ↔ M9 trừ `F0-00` | 911 | 807,0 | −11 % | Khớp sát sau khi trừ `F0-00` ra khỏi M9 của LAB-1 — nếu không trừ thì lệch tới −42 %, và đó là lỗi so sánh chứ không phải chênh thật |
+| M10 — Chuyển đổi dữ liệu | 298 | 153,5 | −49 % | **Chênh lớn nhất và là chỗ backlog thiếu.** LAB-1 ước 298 giờ cho bảng điều khiển migration (`F1-20`) cộng thực thi + ghi lineage (`F4-02`); backlog mới có 2 màn và 1 lược đồ, chưa có mục nào cho script chuyển đổi, đối soát và chạy thử. Xem §5.1 |
+| Nền tảng và môi trường · `SETUP` + `PLAT` ↔ `F0-00` | 568 | 435,0 | −23 % | `SETUP` + `PLAT` so với `F0-00` của LAB-1. Thấp hơn 23 %: backlog chưa có mục cho event store append-only và version hoá rule — hai thứ `F0-00` nêu đích danh |
+| **Tổng** | **7 542** | **7 960,0** | **+6 %** | Tổng gần bằng nhau là **tất yếu** — hệ số 6,4 được chia ra từ chính tổng này (§3.3) |
+
+### 5.1 Chênh −49 % ở M10 là chỗ backlog thiếu, không phải chỗ LAB-1 ước thừa
+
+LAB-1 có hai feature cho chuyển đổi dữ liệu: `F1-20` bảng điều khiển migration và đối soát
+(189 giờ) và `F4-02` thực thi migration cùng ghi lineage (109 giờ). Backlog hiện có **3 mục**:
+hai màn mức B (`S1-40`, `S1-41`) và một mục lược đồ `M10_DB`. **Không có mục nào** cho script
+chuyển đổi, cho đối soát sau khi chạy, hay cho lần chạy thử trên dữ liệu thật.
+
+Đây là **chỗ hở của bước break task**, đã ghi vào `task-breakdown.md`. Không vá bằng cách
+nâng giờ của ba mục đang có: việc chưa được chia thì chưa có mục để gắn giờ, nâng số chỉ
+làm con số đẹp lên mà backlog vẫn thiếu việc. Phải thêm mục ở vòng break sau.
+
+Hai chênh dương lớn (M1 +52 %, M7 +68 %) **không** phải chỗ thiếu của LAB-1. Chúng đến từ
+cách chia: một màn mức B ở backlog là **một mục trọn gói BE + FE + test**, nên giờ dồn vào
+một chỗ; LAB-1 rải cùng khối lượng đó qua ba vai trò với đơn giá khác nhau.
+
