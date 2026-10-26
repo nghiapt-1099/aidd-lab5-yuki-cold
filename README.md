@@ -1,33 +1,107 @@
-# LAB-5 — Backlog quản lý dự án · Yuki Cold Logistics
+# Backlog quản lý dự án — Yuki Cold Logistics
 
-Backlog cho hệ thống hỗ trợ nghiệp vụ chuỗi lạnh thực phẩm, chia từ bộ thiết kế chi tiết
-đã có. Đây là bài tập của khoá AIDD Leader; **không phải sản phẩm thương mại**.
+| | |
+|---|---|
+| **Dự án** | 食品コールドチェーン業務支援システム — hệ thống hỗ trợ nghiệp vụ chuỗi lạnh thực phẩm |
+| **Học viên** | nghiapt-1099 (Phạm Trọng Nghĩa) |
+| **Đề** | Product B — Yuki Cold Logistics |
 
-## Vào đâu để xem
+> Đây là bài tập của khoá AIDD Leader. **Không phải sản phẩm thương mại, không chứa dữ liệu thật.**
+
+## 1. Tổng quan
+
+Backlog chia từ **bộ thiết kế chi tiết LAB-4 nộp ngày 2026-10-24**, cộng trừ những gì khai ở
+[`PREMISE.md`](PREMISE.md) — **có thay đổi**, 11 dòng sửa thiết kế và 5 câu hỏi khách còn mở.
+
+| Số | Đếm cái gì |
+|---:|---|
+| **13** | epic trên Project |
+| **140** | issue (không tính epic, không tính sub-issue) |
+| **48** | sub-issue của màn mức A (ba lớp BE · FE · test) |
+| **172** | mục lá được chấm điểm trực tiếp — bằng issue + sub-issue |
+| **1245** | SWP cộng trên mục lá; mục cha lấy tổng của con nên **không cộng vào đây** |
+| **7 960,0** | giờ ước lượng cộng trên mục lá = 56,9 tháng công (140 giờ/tháng) |
+
+**Sprint giả lập đã chạy:** `Inc 0 — nền tảng` (7 mục, xong) và `Sprint 1`
+(10 mục · 5 xong · 2 đang làm · 3 trượt sang sprint sau). Báo cáo ở
+[`progress-report.md`](progress-report.md).
+
+## 2. Link
 
 | Thứ | Ở đâu |
 |---|---|
-| Bảng công việc | [GitHub Project](https://github.com/users/nghiapt-1099/projects/1) — 201 mục, mở không cần đăng nhập |
-| Cách chia backlog, chỗ hở, câu hỏi chờ khách | [`Output/task-breakdown.md`](Output/task-breakdown.md) |
-| Mẫu một epic đầy đủ | [`Output/epic-mau-M2.md`](Output/epic-mau-M2.md) |
-| Tiền đề: thiết kế đổi ở đâu so với bản trước | [`Output/PREMISE.md`](Output/PREMISE.md) |
-| Chấm điểm khối lượng (SWP) và năm mục người kiểm | [`Output/estimate.md`](Output/estimate.md) |
-| Báo cáo chấm điểm đầy đủ, mở offline | [`Output/swp-report/swp-lab5-2026-10-26.html`](Output/swp-report/swp-lab5-2026-10-26.html) |
-| Báo cáo tiến độ Sprint 1 (giả lập) | [`Output/progress-report.md`](Output/progress-report.md) |
+| Kho này | https://github.com/nghiapt-1099/aidd-lab5-yuki-cold |
+| Bảng công việc | [GitHub Project](https://github.com/users/nghiapt-1099/projects/1) |
+| Báo cáo chấm điểm HTML | [`Output/swp-report/swp-lab5-2026-10-26.html`](swp-report/swp-lab5-2026-10-26.html) |
 
-## Cấu trúc backlog
+**Đã mở thử bằng cửa sổ ẩn danh** (không đăng nhập): kho và bảng công việc đều xem được.
+Riêng file HTML, GitHub trả về dưới dạng mã nguồn — tải về rồi mở bằng trình duyệt thì xem
+được đầy đủ, file tự chứa, không gọi tài nguyên ngoài.
 
-13 epic · 140 issue · 48 sub-issue. Hai Iteration đã chạy giả lập: `Inc 0 — nền tảng`
-(7 mục, xong) và `Sprint 1` (10 mục, 5 xong). Mã `BL-{epic}-{nnn}` là khoá ổn định; số `#` là issue
-trên kho này. Màn mức A tách sub-issue theo lớp BE · FE · test; màn mức B một issue.
+## 3. Cấu trúc kho
 
-## Thứ tài liệu này **không** chứa
+| File / thư mục | Nội dung |
+|---|---|
+| `README.md` | File này — tổng quan, link, bảng Spec → epic |
+| [`PREMISE.md`](PREMISE.md) | Tiền đề: backlog khác bản LAB-4 đã nộp ở đâu, vì sao |
+| [`task-breakdown.md`](task-breakdown.md) | Nguyên tắc chia việc, định nghĩa xong, chỗ hở phát hiện khi chia |
+| [`epic-mau-M2.md`](epic-mau-M2.md) | Một epic đầy đủ làm mẫu, kèm một mô tả issue nguyên văn |
+| [`estimate.md`](estimate.md) | Chấm SWP, năm mục người kiểm, cách quy ra giờ, so với ước lượng LAB-1 |
+| [`progress-report.md`](progress-report.md) | Báo cáo tiến độ Sprint 1 |
+| [`burndown-sprint-1.svg`](burndown-sprint-1.svg) | Ảnh burndown của Sprint 1 |
+| [`AI-report.md`](AI-report.md) | Dùng AI thế nào, soát ra sao, prompt nguyên văn |
+| `swp-report/` | Báo cáo HTML của công cụ chấm điểm |
 
-Đề bài gốc, trích đoạn RFP, dữ liệu thật, dữ liệu cá nhân và khoá bí mật đều **không** có
-ở đây. Tài liệu thiết kế chi tiết là tài liệu nội bộ, không đẩy lên; mục nào cần tới nó thì
-dẫn bằng mã (`S2-04`, `API-M3-029`, `M3_DB.md`) chứ không chép nội dung.
+**Thứ kho này không chứa:** đề bài gốc, trích đoạn RFP, tài liệu thiết kế chi tiết, dữ liệu
+thật, dữ liệu cá nhân, khoá bí mật. Mục nào cần tới thiết kế thì **dẫn bằng mã** (`S2-04`,
+`API-M3-029`, `M3_DB.md`) chứ không chép nội dung.
 
-## Thao tác không hoàn tác được
+**Đường dẫn nội bộ.** Các mục dưới đây nhắc tới file **không nộp**, nằm trong thư mục làm việc
+của học viên, người ngoài không mở được: `work/ai-log.md` (sổ lỗi AI), `work/test-summary.md`
+(sổ vòng kiểm), `work/checks/` (bộ kiểm), `work/prompts/` (prompt nguyên văn và output gốc),
+`LAB-4/Output/specs/` (thiết kế chi tiết).
 
-Kho này chỉ chứa tài liệu — không có lệnh nào xoá hay đổi dữ liệu. Bảng công việc có thể
-đổi trạng thái mục; đổi rồi thì lịch sử cũ không khôi phục được qua giao diện.
+## 4. Spec → epic
+
+| Spec nguồn (LAB-4) hoặc dòng PREMISE | Epic trên Project | Mục lá | SWP | Ghi chú |
+|---|---|---:|---:|---|
+| `m1-master-data/` · `M1_DB.md` · `api-list.md` (API-M1-*) | [#5](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/5) — `BL-M1-000` Dữ liệu chủ | 19 | 135 | Dữ liệu chủ: khách, SKU, vị trí kho, phương tiện, tài xế |
+| `m2-inbound/` · `M2_DB.md` | [#1](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/1) — `BL-M2-000` Nhập hàng | 10 | 67 | Nhập hàng và ghi kiểm; tạo lô nằm ở M3 |
+| `m3-inventory/` · `M3_DB.md` | [#7](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/7) — `BL-M3-000` Tồn kho | 20 | 127 | Tồn kho, lô, cất hàng, kiểm kê, cách ly |
+| `m4-outbound/` · `M4_DB.md` | [#8](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/8) — `BL-M4-000` Xuất hàng | 21 | 166 | Đơn hàng, phân bổ 6 bước, lấy hàng, xếp hàng |
+| `m5-transport-delivery/` · `M5_DB.md` | [#9](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/9) — `BL-M5-000` Vận tải · giao hàng | 32 | 263 | Lập tuyến, giao hàng, chứng cứ POD ngoại tuyến |
+| `m6-temperature-haccp/` · `M6_DB.md` | [#10](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/10) — `BL-M6-000` Nhiệt độ · HACCP | 18 | 124 | **Nhãn `rb-haccp`** — nguồn pháp lý ngoài, xem `task-breakdown.md` |
+| `m7-traceability-recall/` · `M7_DB.md` | [#11](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/11) — `BL-M7-000` Truy xuất · thu hồi | 12 | 101 | Truy xuất ngược xuôi, thu hồi |
+| `m8-reporting-audit/` · `M8_DB.md` | [#12](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/12) — `BL-M8-000` Báo cáo · kiểm toán | 6 | 36 | Báo cáo, xuất dữ liệu, nhật ký kiểm toán |
+| `m9-platform-security/` · `M9_DB.md` | [#13](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/13) — `BL-M9-000` Nền tảng · bảo mật | 20 | 126 | Xác thực, phân quyền, 12 chức năng nền `N4-*` |
+| `m10-data-migration/` · `M10_DB.md` | [#6](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/6) — `BL-M10-000` Chuyển dữ liệu | 3 | 24 | **Chia còn thiếu mục** — `task-breakdown.md` §4.11 |
+| `_common/api-conventions.md` · `COMMON_DB` | [#14](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/14) — `BL-PLAT-000` Quy ước dùng chung | 2 | 7 | Quy ước dùng chung mọi module |
+| `PREMISE.md` §1.7 · `m5-transport-delivery/` (N4-18) | [#4](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/4) — `BL-DRV-000` Ràng buộc giờ lái 2024 | 2 | 8 | **Ràng buộc giờ lái xe tải từ 2024** — hạng mục nghiệp vụ đặc thù, tách riêng theo yêu cầu đề |
+| `PREMISE.md` §2 (giả định) · `ARCHITECTURE_DESIGN.md` | [#15](https://github.com/nghiapt-1099/aidd-lab5-yuki-cold/issues/15) — `BL-SETUP-000` Nền tảng dự án và dữ liệu mẫu | 7 | 61 | Dựng môi trường, công cụ, dữ liệu mẫu — **không có trong thiết kế LAB-4**, sinh ra khi chia việc |
+| | **Tổng** | **172** | **1245** | |
+
+## 5. Thao tác không hoàn tác được, và cách đưa về ban đầu
+
+| Thao tác | Mất gì | Khôi phục |
+|---|---|---|
+| Đóng / mở lại issue | Không mất gì | Mở lại được, lịch sử giữ nguyên |
+| Đổi `Status`, `Iteration`, `Point`, `Est. hours` trên bảng | **Giá trị cũ không xem lại được** qua giao diện | Chạy lại `work/push-points.py`, `work/push-hours.py`, `work/push-sprint.py` (nội bộ) — ba script này ghi lại đúng giá trị đã chốt |
+| Xoá một mục khỏi Project | Mất liên kết mục ↔ bảng, issue vẫn còn | Thêm lại bằng `work/push-backlog.py` (nội bộ) |
+| Xoá issue trên kho | **Mất hẳn**, không khôi phục được | Không có đường lùi — dựng lại bằng `work/gen-backlog.py` sẽ ra issue **số mới** |
+
+Kho này chỉ chứa tài liệu; không có lệnh nào trong kho xoá hay đổi dữ liệu. Mọi thao tác
+đổi dữ liệu đều nằm ở bảng công việc.
+
+## 6. Cách đọc mã trong các file
+
+| Mã | Nghĩa |
+|---|---|
+| `BL-{epic}-{nnn}` | Mã ổn định của mục trong backlog. `nnn` là khối số: `000` epic · `001–009` làm rõ · `010–019` dựng môi trường · `020–039` chức năng nền · `050–149` màn · `150–179` nhóm API · `180–199` lược đồ và Technical Design · `200+` sub-issue |
+| `S1-03`, `S2-04` | Mã màn hình trong thiết kế LAB-4 |
+| `API-M3-029` | Mã API; `M3` là module |
+| `M3_DB.md` | File thiết kế cơ sở dữ liệu của module M3 |
+| `N4-13` | Mã chức năng nền (job, tiến trình chạy ngầm) |
+| `CQ30`…`CQ36` | Câu hỏi đang chờ khách trả lời |
+| `ACC-DATE-01` | Cổng nghiệm thu của một increment trong lịch tổng |
+| Mức spec **A** / **B** | A: màn có spec riêng đầy đủ, tách ba lớp BE · FE · test. B: màn spec gọn, một mục trọn gói |
+| SWP | Điểm khối lượng = Bề rộng × Độ khó, tra ma trận — `estimate.md` §1 |
